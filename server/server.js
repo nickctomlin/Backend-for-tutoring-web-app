@@ -4,6 +4,7 @@ const app = express();
 const { auth } = require('express-oauth2-jwt-bearer');
 const cors = require('cors');
 app.use(cors());
+var bodyParser = require('body-parser')
 const port = process.env.PORT || 4000;
 const mongoose = require("mongoose");
 //const Router = require("./routes")
@@ -28,9 +29,13 @@ mongoose.connect(uri, {
   });
 // enforce on all endpoints
 //app.use(jwtCheck);
+var jsonParser = bodyParser.json();
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
 app.get('/', function (req, res) {
     res.send('Free');
 });
+
 app.get('/protected',jwtCheck, async function (req, res) {
     try{
         const token = req.headers.authorization.split(' ')[1];
@@ -73,6 +78,53 @@ catch{
    console.log("error")
    res.send("Ths is wrong") 
 }
+});
+app.get('/check1',jwtCheck, async function (req, res) {
+    var send = "Neither";
+    try{
+        const token = req.headers.authorization.split(' ')[1];
+        //console.log(req);
+      //console.log(token);
+        const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/userinfo',{headers: {
+            Authorization: `Bearer ${token}`,
+          }});
+    const userInfo = response.data;
+    const name = userInfo.nickname;
+    //res.send(name);
+   await tutorModel.findOne({tutorId: name}).catch((err)=>{
+        //console.log(docs);
+        res.send(err);
+    })
+    .then((docs)=>{
+        //console.log("Checking Tutor");
+        if (docs == null)
+        console.log("Null");
+        else
+        {
+         //console.log("Not Null Tutors");
+        send = "Tutor";
+        }
+    });
+    await userModel.findOne({userName: "svemugunta"}).catch((err)=>{
+        //console.log(docs);
+        res.send(err);
+    })
+    .then((docs)=>{
+        //console.log("Checking Users");
+        if (docs == null)
+        console.log("Null");
+        else
+        {
+        //console.log("Not Null Users");
+        send = "User";
+        }
+    });
+}
+catch{
+   console.log("error")
+   res.send("Mistake");
+}
+res.send(send);
 });
 app.get('/reservations/:id',jwtCheck, async function (req, res) {
     ID = req.params.Id;
@@ -117,9 +169,20 @@ app.get('/tutors/:Id', function (req, res){
     });
 });
 
-app.post('/tutors', (req, res) => {
+app.post('/tutors',urlencodedParser, (req, res) => {
     req.body; // JavaScript object containing the parse JSON
     const doc = new tutorModel(req.body);
+    doc.save().then(()=>{
+        res.send("Done");
+       })
+       .catch((error)=>res.send(error));
+   // res.send("Here");
+    //res.json(req.body.Sri);
+  });
+  app.post('/user', urlencodedParser,(req, res) => {
+     console.log("In User Post")
+    console.log(req.body); // JavaScript object containing the parse JSON
+    const doc = new userModel(req.body);
     doc.save().then(()=>{
         res.send("Done");
        })
