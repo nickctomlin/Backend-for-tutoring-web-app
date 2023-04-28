@@ -40,7 +40,7 @@ app.get('/protected',jwtCheck, async function (req, res) {
     try{
         const token = req.headers.authorization.split(' ')[1];
         //console.log(req);
-    //console.log(token);
+        console.log(token);
         const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/userinfo',{headers: {
             Authorization: `Bearer ${token}`,
           }});
@@ -57,7 +57,7 @@ app.get('/reservations',jwtCheck, async function (req, res) {
     try{
         const token = req.headers.authorization.split(' ')[1];
         //console.log(req);
-    //console.log(token);
+        console.log(token);
         const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/userinfo',{headers: {
             Authorization: `Bearer ${token}`,
           }});
