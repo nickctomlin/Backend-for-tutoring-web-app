@@ -30,16 +30,20 @@ console.log(response.data);
   return (
     <div>
     {isAuthenticated && (
-      <div>
+      <div class="profile"><img src={user.picture} width="40" height="40" class="rounded-circle"></img> Logged in as {user.name}</div>
+      
+
+      /* <div>
         <img src={user.picture} alt={user.name} />
         <h2>{user.name}</h2>
         <p>{user.email}</p>
-      </div>
+      </div> */
     )}
-    <ul>
+
+    {/* <ul>
       <li><button onClick={callApi}>Call Api Route</button></li>
       <li><button onClick={callProtectedApi}>Call Protected Api</button></li> 
-    </ul>
+    </ul> */}
     </div>
   );
 };

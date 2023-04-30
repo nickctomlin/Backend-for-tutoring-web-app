@@ -176,7 +176,8 @@ const Home = () => {
           </div>
       </div>
   </section>
-  <div class="py-5">
+
+  {/* <div class="py-5">
       <div class="container">
           <div class="row align-items-center">
               <div class="col-md-3 col-sm-6 my-3">
@@ -193,7 +194,7 @@ const Home = () => {
               </div>
           </div>
       </div>
-  </div>
+  </div> */}
       </div>
     );
 };

@@ -17,9 +17,6 @@ const router = createBrowserRouter([
     element:  
     <div>
     <App />
-    <LogoutButton/>
-    <Profile/>
-    <SignUp/>
     </div>,
   },
   {

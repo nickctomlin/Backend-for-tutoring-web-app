@@ -20,11 +20,11 @@ function App()  {
             </Routes>
           </Navigation>
     <Header/>
-    <Home/>
     <AboutUs/>
+    <Home/>
     <Contact/>
     </div>
-    <div>{!isAuthenticated && <button onClick={() => loginWithRedirect()}>Log Into Account</button>}</div>
+    {/* <div>{!isAuthenticated && <button onClick={() => loginWithRedirect()}>Log Into Account</button>}</div> */}
   </div>
   //return <button onClick={() => loginWithPopup()}>Log In With loginWithPopup</button>
   );
