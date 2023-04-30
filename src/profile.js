@@ -15,12 +15,13 @@ function callApi(){
 async function callProtectedApi(){
     try {
         
-        //console.log("Is Authooo")
+ // console.log("Is Authooo")
 const token = await getAccessTokenSilently();
 //console.log(token);
-const response =  await axios.get("http://localhost:4000/protected",{headers: {
+const response =  await axios.post("http://localhost:4000/userAppointments",{ appointment: 'New Appointment' },{headers: {
     authorization: `Bearer ${token}`,
-  }});
+  }
+});
 console.log(response.data);
     }catch (error) {
         console.log(error.message);

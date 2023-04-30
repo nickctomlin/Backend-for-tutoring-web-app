@@ -31,7 +31,7 @@ mongoose.connect(uri, {
 //app.use(jwtCheck);
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
-
+//app.use(express.json())  
 app.get('/', function (req, res) {
     res.send('Free');
 });
@@ -56,14 +56,12 @@ catch{
 app.get('/reservations',jwtCheck, async function (req, res) {
     try{
         const token = req.headers.authorization.split(' ')[1];
-        //console.log(req);
-        console.log(token);
         const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/userinfo',{headers: {
             Authorization: `Bearer ${token}`,
           }});
     const userInfo = response.data
     const name = userInfo.nickname;
-    appointmentModel.findOne({StudentuserName: name}).catch((err)=>{
+    appointmentModel.find({StudentuserName: name}).catch((err)=>{
         //console.log(docs);
         res.send(err);
     })
@@ -83,6 +81,7 @@ app.get('/check1',jwtCheck, async function (req, res) {
     var send = "Neither";
     try{
         const token = req.headers.authorization.split(' ')[1];
+        //console.log("Here At Checker")
         //console.log(req);
       //console.log(token);
         const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/userinfo',{headers: {
@@ -90,22 +89,22 @@ app.get('/check1',jwtCheck, async function (req, res) {
           }});
     const userInfo = response.data;
     const name = userInfo.nickname;
-    //res.send(name);
+    //console.log(name);
    await tutorModel.findOne({tutorId: name}).catch((err)=>{
         //console.log(docs);
         res.send(err);
     })
     .then((docs)=>{
-        //console.log("Checking Tutor");
+        //onsole.log("Checking Tutor");
         if (docs == null)
         console.log("Null");
         else
         {
-         //console.log("Not Null Tutors");
+        // console.log("Not Null Tutors");
         send = "Tutor";
         }
     });
-    await userModel.findOne({userName: "svemugunta"}).catch((err)=>{
+    await userModel.findOne({userName: name}).catch((err)=>{
         //console.log(docs);
         res.send(err);
     })
@@ -124,6 +123,7 @@ catch{
    console.log("error")
    res.send("Mistake");
 }
+//console.log("Send is " + send);
 res.send(send);
 });
 app.get('/reservations/:id',jwtCheck, async function (req, res) {
@@ -139,7 +139,7 @@ app.get('/reservations/:id',jwtCheck, async function (req, res) {
         res.send(docs);
     });
 });
-app.post('/reservations', (req, res) => {
+app.post('/reservations',urlencodedParser, (req, res) => {
     req.body; // JavaScript object containing the parse JSON
     const doc = new appointmentModel(req.body);
     doc.save().then(()=>{
@@ -190,6 +190,106 @@ app.post('/tutors',urlencodedParser, (req, res) => {
    // res.send("Here");
     //res.json(req.body.Sri);
   });
+  app.post('/userFavorite',jwtCheck,express.json(), async (req, res) => {
+    console.log("In User Favorite")
+   //console.log(req.body); // JavaScript object containing the parse JSON
+   try{
+    const token = req.headers.authorization.split(' ')[1];
+        const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/userinfo',{headers: {
+            Authorization: `Bearer ${token}`,
+          }});
+    const userInfo = response.data
+    const name = userInfo.nickname;
+    console.log(name)
+    console.log(req.body)
+    userModel.findOneAndUpdate({userName: name},   { $push: { 
+        favoriteList: req.body.favorite
+      } 
+}).catch((err)=>{
+        //console.log(docs);
+        res.send(err);
+    })
+    .then((docs)=>{
+        console.log(docs)
+        res.send(docs);
+    });
+   }
+   catch
+   {
+    console.log("error")
+   res.send("Ths is wrong") 
+   }
+
+  // res.send("Here");
+   //res.json(req.body.Sri);
+ });
+
+ app.post('/userAppointments',jwtCheck,express.json(), async (req, res) => {
+    console.log("In User Appointments")
+   //console.log(req.body); // JavaScript object containing the parse JSON
+   try{
+    const token = req.headers.authorization.split(' ')[1];
+        const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/userinfo',{headers: {
+            Authorization: `Bearer ${token}`,
+          }});
+    const userInfo = response.data
+    const name = userInfo.nickname;
+    //console.log(name)
+    console.log(req.body)
+    userModel.findOneAndUpdate({userName: name},   { $push: { 
+        upcomingAppointments: req.body.appointment
+      } 
+}).catch((err)=>{
+        //console.log(docs);
+        res.send(err);
+    })
+    .then((docs)=>{
+        console.log(docs)
+        res.send(docs);
+    });
+   }
+   catch
+   {
+    console.log("error")
+   res.send("Ths is wrong") 
+   }
+
+  // res.send("Here");
+   //res.json(req.body.Sri);
+ });
+ app.post('/tutorAppointments',jwtCheck,express.json(), async (req, res) => {
+    console.log("In Tutor Appointments")
+   //console.log(req.body); // JavaScript object containing the parse JSON
+   try{
+    const token = req.headers.authorization.split(' ')[1];
+        const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/userinfo',{headers: {
+            Authorization: `Bearer ${token}`,
+          }});
+    const userInfo = response.data
+    const name = userInfo.nickname;
+    //console.log(name)
+    console.log(req.body)
+    tutorModel.findOneAndUpdate({tutorId: name},   { $push: { 
+        upcomingAppointments: req.body.appointment
+      } 
+}).catch((err)=>{
+        //console.log(docs);
+        res.send(err);
+    })
+    .then((docs)=>{
+        console.log(docs)
+        res.send(docs);
+    });
+   }
+   catch
+   {
+    console.log("error")
+   res.send("Ths is wrong") 
+   }
+
+  // res.send("Here");
+   //res.json(req.body.Sri);
+ });
 
 app.use((req,res,next)=>{
     const error = new Error('not found')
