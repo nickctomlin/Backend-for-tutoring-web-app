@@ -105,6 +105,29 @@
 color: white;
 }
 
+.appointment {
+  background-color: #edecec ;
+  border: 2px solid rgb(232, 117, 0);
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.appointment:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px #154734;
+}
+
+.appointment h2 {
+  margin-top: 0;
+}
+
+.appointment p {
+  margin: 0;
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);

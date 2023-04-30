@@ -21,13 +21,14 @@ const Navigation = () => {
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#services">Find Tutors</a></li>
                         <li class="nav-item"><a class="nav-link" href="#portfolio">Book Appointments</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#appointments">Tutoring Appointments</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
                         <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     </ul>
                     
                 </div>
-                <div class="login">{!isAuthenticated && <button onClick={() => loginWithRedirect()}>Log Into Account</button>}</div>
+                <div class="login">{!isAuthenticated && <button onClick={() => loginWithRedirect()}>Log In</button>}</div>
                 <LogoutButton/>
                 <Profile/>
                 
