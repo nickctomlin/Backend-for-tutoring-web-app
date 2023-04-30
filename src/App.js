@@ -20,8 +20,8 @@ function App()  {
             </Routes>
           </Navigation>
     <Header/>
-    <AboutUs/>
     <Home/>
+    <AboutUs/>
     <Contact/>
     </div>
     {/* <div>{!isAuthenticated && <button onClick={() => loginWithRedirect()}>Log Into Account</button>}</div> */}
