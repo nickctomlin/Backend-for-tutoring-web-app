@@ -5,158 +5,158 @@ import React from 'react'
 const Home = () => {
     return (
       <div>
-        <section class="page-section" id="services">
-      <div class="container">
-          <div class="text-center">
-              <h2 class="section-heading text-uppercase">Find Tutors</h2>
-              <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        <section className="page-section" id="services">
+      <div className="container">
+          <div className="text-center">
+              <h2 className="section-heading text-uppercase">Find Tutors</h2>
+              <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
           </div>
-          <div class="row text-center">
-              <div class="col-md-4">
-                  <span class="fa-stack fa-4x">
-                      <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                      <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+          <div className="row text-center">
+              <div className="col-md-4">
+                  <span className="fa-stack fa-4x">
+                      <i className="fas fa-circle fa-stack-2x text-primary"></i>
+                      <i className="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
                   </span>
-                  <h4 class="my-3">E-Commerce</h4>
-                  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                  <h4 className="my-3">E-Commerce</h4>
+                  <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
               </div>
-              <div class="col-md-4">
-                  <span class="fa-stack fa-4x">
-                      <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                      <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+              <div className="col-md-4">
+                  <span className="fa-stack fa-4x">
+                      <i className="fas fa-circle fa-stack-2x text-primary"></i>
+                      <i className="fas fa-laptop fa-stack-1x fa-inverse"></i>
                   </span>
-                  <h4 class="my-3">Responsive Design</h4>
-                  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                  <h4 className="my-3">Responsive Design</h4>
+                  <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
               </div>
-              <div class="col-md-4">
-                  <span class="fa-stack fa-4x">
-                      <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                      <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+              <div className="col-md-4">
+                  <span className="fa-stack fa-4x">
+                      <i className="fas fa-circle fa-stack-2x text-primary"></i>
+                      <i className="fas fa-lock fa-stack-1x fa-inverse"></i>
                   </span>
-                  <h4 class="my-3">Web Security</h4>
-                  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                  <h4 className="my-3">Web Security</h4>
+                  <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
               </div>
           </div>
       </div>
   </section>
-  <section class="page-section bg-light" id="portfolio">
-      <div class="container">
-          <div class="text-center">
-              <h2 class="section-heading text-uppercase">Book Appointments</h2>
-              <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+  <section className="page-section bg-light" id="portfolio">
+      <div className="container">
+          <div className="text-center">
+              <h2 className="section-heading text-uppercase">Book Appointments</h2>
+              <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
           </div>
-          <div class="row">
-              <div class="col-lg-4 col-sm-6 mb-4">
-                  <div class="portfolio-item">
-                      <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                          <div class="portfolio-hover">
-                              <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+          <div className="row">
+              <div className="col-lg-4 col-sm-6 mb-4">
+                  <div className="portfolio-item">
+                      <a className="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                          <div className="portfolio-hover">
+                              <div className="portfolio-hover-content"><i className="fas fa-plus fa-3x"></i></div>
                           </div>
-                          <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
+                          <img className="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
                       </a>
-                      <div class="portfolio-caption">
-                          <div class="portfolio-caption-heading">Threads</div>
-                          <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                      <div className="portfolio-caption">
+                          <div className="portfolio-caption-heading">Threads</div>
+                          <div className="portfolio-caption-subheading text-muted">Illustration</div>
                       </div>
                   </div>
               </div>
-              <div class="col-lg-4 col-sm-6 mb-4">
-                  <div class="portfolio-item">
-                      <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
-                          <div class="portfolio-hover">
-                              <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+              <div className="col-lg-4 col-sm-6 mb-4">
+                  <div className="portfolio-item">
+                      <a className="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+                          <div className="portfolio-hover">
+                              <div className="portfolio-hover-content"><i className="fas fa-plus fa-3x"></i></div>
                           </div>
-                          <img class="img-fluid" src="assets/img/portfolio/2.jpg" alt="..." />
+                          <img className="img-fluid" src="assets/img/portfolio/2.jpg" alt="..." />
                       </a>
-                      <div class="portfolio-caption">
-                          <div class="portfolio-caption-heading">Explore</div>
-                          <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
+                      <div className="portfolio-caption">
+                          <div className="portfolio-caption-heading">Explore</div>
+                          <div className="portfolio-caption-subheading text-muted">Graphic Design</div>
                       </div>
                   </div>
               </div>
-              <div class="col-lg-4 col-sm-6 mb-4">
-                  <div class="portfolio-item">
-                      <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
-                          <div class="portfolio-hover">
-                              <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+              <div className="col-lg-4 col-sm-6 mb-4">
+                  <div className="portfolio-item">
+                      <a className="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+                          <div className="portfolio-hover">
+                              <div className="portfolio-hover-content"><i className="fas fa-plus fa-3x"></i></div>
                           </div>
-                          <img class="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." />
+                          <img className="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." />
                       </a>
-                      <div class="portfolio-caption">
-                          <div class="portfolio-caption-heading">Finish</div>
-                          <div class="portfolio-caption-subheading text-muted">Identity</div>
+                      <div className="portfolio-caption">
+                          <div className="portfolio-caption-heading">Finish</div>
+                          <div className="portfolio-caption-subheading text-muted">Identity</div>
                       </div>
                   </div>
               </div>
-              <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
-                  <div class="portfolio-item">
-                      <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                          <div class="portfolio-hover">
-                              <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+              <div className="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+                  <div className="portfolio-item">
+                      <a className="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
+                          <div className="portfolio-hover">
+                              <div className="portfolio-hover-content"><i className="fas fa-plus fa-3x"></i></div>
                           </div>
-                          <img class="img-fluid" src="assets/img/portfolio/4.jpg" alt="..." />
+                          <img className="img-fluid" src="assets/img/portfolio/4.jpg" alt="..." />
                       </a>
-                      <div class="portfolio-caption">
-                          <div class="portfolio-caption-heading">Lines</div>
-                          <div class="portfolio-caption-subheading text-muted">Branding</div>
+                      <div className="portfolio-caption">
+                          <div className="portfolio-caption-heading">Lines</div>
+                          <div className="portfolio-caption-subheading text-muted">Branding</div>
                       </div>
                   </div>
               </div>
-              <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
-                  <div class="portfolio-item">
-                      <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
-                          <div class="portfolio-hover">
-                              <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+              <div className="col-lg-4 col-sm-6 mb-4 mb-sm-0">
+                  <div className="portfolio-item">
+                      <a className="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
+                          <div className="portfolio-hover">
+                              <div className="portfolio-hover-content"><i className="fas fa-plus fa-3x"></i></div>
                           </div>
-                          <img class="img-fluid" src="assets/img/portfolio/5.jpg" alt="..." />
+                          <img className="img-fluid" src="assets/img/portfolio/5.jpg" alt="..." />
                       </a>
-                      <div class="portfolio-caption">
-                          <div class="portfolio-caption-heading">Southwest</div>
-                          <div class="portfolio-caption-subheading text-muted">Website Design</div>
+                      <div className="portfolio-caption">
+                          <div className="portfolio-caption-heading">Southwest</div>
+                          <div className="portfolio-caption-subheading text-muted">Website Design</div>
                       </div>
                   </div>
               </div>
-              <div class="col-lg-4 col-sm-6">
-                  <div class="portfolio-item">
-                      <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
-                          <div class="portfolio-hover">
-                              <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+              <div className="col-lg-4 col-sm-6">
+                  <div className="portfolio-item">
+                      <a className="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
+                          <div className="portfolio-hover">
+                              <div className="portfolio-hover-content"><i className="fas fa-plus fa-3x"></i></div>
                           </div>
-                          <img class="img-fluid" src="assets/img/portfolio/6.jpg" alt="..." />
+                          <img className="img-fluid" src="assets/img/portfolio/6.jpg" alt="..." />
                       </a>
-                      <div class="portfolio-caption">
-                          <div class="portfolio-caption-heading">Window</div>
-                          <div class="portfolio-caption-subheading text-muted">Photography</div>
+                      <div className="portfolio-caption">
+                          <div className="portfolio-caption-heading">Window</div>
+                          <div className="portfolio-caption-subheading text-muted">Photography</div>
                       </div>
                   </div>
               </div>
           </div>
       </div>
   </section>
-  <section class="page-section bg-light" id="appointments">
+  <section className="page-section bg-light" id="appointments">
       <h1><center>Tutoring Appointments</center></h1>
-      <div class="appointment" data-id="1">
+      <div className="appointment" data-id="1">
         <h2>Math Tutoring</h2>
         <p><strong>Tutor:</strong> John Doe</p>
         <p><strong>Time:</strong> Feb 16th, 2023 @ 2:00 PM - 3:00 PM</p>
         <p><strong>Location:</strong> Room 101</p>
         <button class ="cancel-btn">Cancel Appointment</button>
       </div>
-      <div class="appointment" data-id="2">
+      <div className="appointment" data-id="2">
         <h2>English Tutoring</h2>
         <p><strong>Tutor:</strong> Jane Smith</p>
         <p><strong>Time:</strong> Mar 2nd, 2023 @ 3:00 PM - 4:00 PM</p>
         <p><strong>Location:</strong> Library Room 205</p>
         <button class ="cancel-btn">Cancel Appointment</button>
         </div>
-      <div class="appointment" data-id="3">
+      <div className="appointment" data-id="3">
         <h2>Science Tutoring</h2>
         <p><strong>Tutor:</strong> Michael Lee</p>
         <p><strong>Date/Time:</strong> Feb 24, 2023 @ 4:00 PM - 5:00 PM</p>
         <p><strong>Location:</strong> Room 202</p>
         <button class ="cancel-btn">Cancel Appointment</button>
       </div>
-      <div class="appointment" data-id="4">
+      <div className="appointment" data-id="4">
         <h2>History Tutoring</h2>
         <p><strong>Tutor:</strong> Sarah Johnson</p>
         <p><strong>Time:</strong> Feb 29th, 2023 @ 5:00 PM - 6:00 PM</p>
@@ -164,64 +164,64 @@ const Home = () => {
         <button class ="cancel-btn">Cancel Appointment</button>
       </div>
   </section>
-  <section class="page-section bg-light" id="team">
-      <div class="container">
-          <div class="text-center">
-              <h2 class="section-heading text-uppercase">Our Team</h2>
-              <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+  <section className="page-section bg-light" id="team">
+      <div className="container">
+          <div className="text-center">
+              <h2 className="section-heading text-uppercase">Our Team</h2>
+              <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
           </div>
-          <div class="row">
-              <div class="col-lg-4">
-                  <div class="team-member">
-                      <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="..." />
+          <div className="row">
+              <div className="col-lg-4">
+                  <div className="team-member">
+                      <img className="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="..." />
                       <h4>Parveen Anand</h4>
-                      <p class="text-muted">Lead Designer</p>
-                      <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a>
-                      <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                      <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                      <p className="text-muted">Lead Designer</p>
+                      <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i className="fab fa-twitter"></i></a>
+                      <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i className="fab fa-facebook-f"></i></a>
+                      <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i className="fab fa-linkedin-in"></i></a>
                   </div>
               </div>
-              <div class="col-lg-4">
-                  <div class="team-member">
-                      <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="..." />
+              <div className="col-lg-4">
+                  <div className="team-member">
+                      <img className="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="..." />
                       <h4>Diana Petersen</h4>
-                      <p class="text-muted">Lead Marketer</p>
-                      <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Twitter Profile"><i class="fab fa-twitter"></i></a>
-                      <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                      <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                      <p className="text-muted">Lead Marketer</p>
+                      <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Twitter Profile"><i className="fab fa-twitter"></i></a>
+                      <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Facebook Profile"><i className="fab fa-facebook-f"></i></a>
+                      <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen LinkedIn Profile"><i className="fab fa-linkedin-in"></i></a>
                   </div>
               </div>
-              <div class="col-lg-4">
-                  <div class="team-member">
-                      <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
+              <div className="col-lg-4">
+                  <div className="team-member">
+                      <img className="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
                       <h4>Larry Parker</h4>
-                      <p class="text-muted">Lead Developer</p>
-                      <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
-                      <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                      <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                      <p className="text-muted">Lead Developer</p>
+                      <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i className="fab fa-twitter"></i></a>
+                      <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i className="fab fa-facebook-f"></i></a>
+                      <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i className="fab fa-linkedin-in"></i></a>
                   </div>
               </div>
           </div>
-          <div class="row">
-              <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">The following project was made for CS Project 4485. The contributers include Sri Vemugunta, Sam Krovvidi, Ayush Gopisetty, Sreya Nagumalla, Nicholas Tomlin</p></div>
+          <div className="row">
+              <div className="col-lg-8 mx-auto text-center"><p className="large text-muted">The following project was made for CS Project 4485. The contributers include Sri Vemugunta, Sam Krovvidi, Ayush Gopisetty, Sreya Nagumalla, Nicholas Tomlin</p></div>
           </div>
       </div>
   </section>
 
-  {/* <div class="py-5">
-      <div class="container">
-          <div class="row align-items-center">
-              <div class="col-md-3 col-sm-6 my-3">
-                  <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/microsoft.svg" alt="..." aria-label="Microsoft Logo" /></a>
+  {/* <div className="py-5">
+      <div className="container">
+          <div className="row align-items-center">
+              <div className="col-md-3 col-sm-6 my-3">
+                  <a href="#!"><img className="img-fluid img-brand d-block mx-auto" src="assets/img/logos/microsoft.svg" alt="..." aria-label="Microsoft Logo" /></a>
               </div>
-              <div class="col-md-3 col-sm-6 my-3">
-                  <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/google.svg" alt="..." aria-label="Google Logo" /></a>
+              <div className="col-md-3 col-sm-6 my-3">
+                  <a href="#!"><img className="img-fluid img-brand d-block mx-auto" src="assets/img/logos/google.svg" alt="..." aria-label="Google Logo" /></a>
               </div>
-              <div class="col-md-3 col-sm-6 my-3">
-                  <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/facebook.svg" alt="..." aria-label="Facebook Logo" /></a>
+              <div className="col-md-3 col-sm-6 my-3">
+                  <a href="#!"><img className="img-fluid img-brand d-block mx-auto" src="assets/img/logos/facebook.svg" alt="..." aria-label="Facebook Logo" /></a>
               </div>
-              <div class="col-md-3 col-sm-6 my-3">
-                  <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/ibm.svg" alt="..." aria-label="IBM Logo" /></a>
+              <div className="col-md-3 col-sm-6 my-3">
+                  <a href="#!"><img className="img-fluid img-brand d-block mx-auto" src="assets/img/logos/ibm.svg" alt="..." aria-label="IBM Logo" /></a>
               </div>
           </div>
       </div>
