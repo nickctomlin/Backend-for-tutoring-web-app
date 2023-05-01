@@ -105,6 +105,26 @@
 color: white;
 }
 
+.flex-container {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  width: 200px;
+  margin: 10px;
+  text-align: center;
+  
+  font-size: 20px;
+}
+
+.about-me {
+  font-size: 15px;
+
+}
+
 .appointment {
   background-color: #edecec ;
   border: 2px solid rgb(232, 117, 0);

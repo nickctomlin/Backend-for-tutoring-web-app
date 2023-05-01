@@ -16,7 +16,7 @@ function App()  {
   <div>
     <div className="login">{!isAuthenticated && <button onClick={() => loginWithRedirect()}>Log In</button>}</div>
     <SignUp/>
-    <LogoutButton/>
+    {/* <LogoutButton/> */}
   </div>
   //return <button onClick={() => loginWithPopup()}>Log In With loginWithPopup</button>
   );

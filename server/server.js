@@ -153,8 +153,10 @@ app.post('/reservations',urlencodedParser, (req, res) => {
 app.get('/tutors', function (req, res){
     tutorModel.find({}).then(function (users) {
         res.send(users);
+        //console.log(users)
         });
 });
+
 app.get('/tutors/:Id', function (req, res){
     ID = req.params.Id;
     console.log(ID);
