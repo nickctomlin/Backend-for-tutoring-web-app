@@ -225,7 +225,140 @@ app.post('/tutors',urlencodedParser, (req, res) => {
   // res.send("Here");
    //res.json(req.body.Sri);
  });
+ app.post('/addReservation',jwtCheck,express.json(), async (req, res) => {
 
+   try{
+    console.log("In Add Reservation");
+    var tutorDocs
+    const i = req.body.index
+const tutor = req.body.tutor
+console.log("i is " + i);
+await tutorModel.findOne({tutorId: tutor}).catch((err)=>{
+    //console.log(docs);
+    res.send(err);
+})
+.then((docs)=>{
+tutorDocs = docs
+});
+var check = tutorDocs.avaliableTime[i].openingHours.isFilled;
+var count =  tutorDocs.avaliableTime[i].openingHours.count+ 1;
+if(check != true)
+{
+var newIsFilled = false;
+if(count == 5 )
+{
+    newIsFilled = true;
+}
+console.log(count);
+console.log(newIsFilled);
+var placeHolder = "avaliableTime."+i+".openingHours.count";
+await tutorModel.findOneAndUpdate({tutorId: tutor},   { 
+    $inc: { 
+        [placeHolder] : 1
+      } 
+}).catch((err)=>{
+    //console.log(docs);
+    res.send(err);
+})
+.then((docs)=>{
+   // console.log(docs)
+    //res.send(docs);
+    console.log("Finished updating the count ")
+});
+placeHolder = "avaliableTime."+i+".openingHours.isFilled"
+await tutorModel.findOneAndUpdate({tutorId: tutor},   { 
+[placeHolder]:  newIsFilled
+}).catch((err)=>{
+    console.log(err);
+    res.send(err);
+})
+.then((docs)=>{
+   // console.log(docs)
+    //res.send(docs);
+    console.log("Finished Updating Place Holder ")
+});
+const doc = new appointmentModel(req.body.obj);
+doc.save().then(()=>{
+    console.log("Done");
+   })
+   .catch((error)=>res.send(error));
+const token = req.headers.authorization.split(' ')[1];
+const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/userinfo',{headers: {
+       Authorization: `Bearer ${token}`,
+     }});
+const userInfo = response.data
+const name = userInfo.nickname;
+console.log("Name is " + name)
+//console.log(req.body)
+var Nname = tutor+name;
+userModel.findOneAndUpdate({userName: name},   { $push: { 
+   upcomingAppointments: Nname
+ } 
+}).catch((err)=>{
+   //console.log(docs);
+   res.send(err);
+})
+.then((docs)=>{
+   console.log(docs)
+   //res.send(docs);
+});
+tutorModel.findOneAndUpdate({tutorId: tutor},   { $push: { 
+    upcomingAppointments: Nname
+  } 
+}).catch((err)=>{
+    //console.log(docs);
+    res.send(err);
+})
+.then((docs)=>{
+    console.log(docs)
+    //res.send(docs);
+});
+res.send("Done");
+}
+else
+{
+    console.log("This is Filled")
+    res.send("Filled")
+}
+
+
+   }
+   catch
+   {
+    console.log("Error Happening");
+    res.send("Error Happened");
+   }
+/*
+    const token = req.headers.authorization.split(' ')[1];
+        const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/userinfo',{headers: {
+            Authorization: `Bearer ${token}`,
+          }});
+    const userInfo = response.data
+    const name = userInfo.nickname;
+    //console.log(name)
+    console.log(req.body)
+    userModel.findOneAndUpdate({userName: name},   { $push: { 
+        upcomingAppointments: req.body.appointment
+      } 
+}).catch((err)=>{
+        //console.log(docs);
+        res.send(err);
+    })
+    .then((docs)=>{
+        console.log(docs)
+        res.send(docs);
+    });
+   }
+   catch
+   {
+    console.log("error")
+   res.send("Ths is wrong") 
+   }
+
+  // res.send("Here");
+   //res.json(req.body.Sri);
+   */
+ });
  app.post('/userAppointments',jwtCheck,express.json(), async (req, res) => {
     console.log("In User Appointments")
    //console.log(req.body); // JavaScript object containing the parse JSON
@@ -259,16 +392,11 @@ app.post('/tutors',urlencodedParser, (req, res) => {
   // res.send("Here");
    //res.json(req.body.Sri);
  });
- app.post('/tutorAppointments',jwtCheck,express.json(), async (req, res) => {
+ app.post('/tutorAppointments',express.json(), async (req, res) => {
     console.log("In Tutor Appointments")
    //console.log(req.body); // JavaScript object containing the parse JSON
    try{
-    const token = req.headers.authorization.split(' ')[1];
-        const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/userinfo',{headers: {
-            Authorization: `Bearer ${token}`,
-          }});
-    const userInfo = response.data
-    const name = userInfo.nickname;
+    const name = req.body.tutorName;
     //console.log(name)
     console.log(req.body)
     tutorModel.findOneAndUpdate({tutorId: name},   { $push: { 
@@ -292,7 +420,72 @@ app.post('/tutors',urlencodedParser, (req, res) => {
   // res.send("Here");
    //res.json(req.body.Sri);
  });
+ app.post('/tutorAddAvaliable',jwtCheck,express.json(), async (req, res) => {
+    console.log("In User Appointments")
+   //console.log(req.body); // JavaScript object containing the parse JSON
+   try{
+    const token = req.headers.authorization.split(' ')[1];
+        const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/userinfo',{headers: {
+            Authorization: `Bearer ${token}`,
+          }});
+    const userInfo = response.data
+    const name = userInfo.nickname;
+    //console.log(name)
+    console.log(req.body)
+    tutorModel.findOneAndUpdate({tutorId: name},   { $push: { 
+        avaliableTime: req.body
+      } 
+}).catch((err)=>{
+        //console.log(docs);
+        res.send(err);
+    })
+    .then((docs)=>{
+        console.log(docs)
+        res.send(docs);
+    });
+   }
+   catch
+   {
+    console.log("error")
+   res.send("Ths is wrong") 
+   }
 
+  // res.send("Here");
+   //res.json(req.body.Sri);
+ });
+ app.post('/tutorUpdateSubj',jwtCheck,express.json(), async (req, res) => {
+    //console.log("In User Appointments")
+   //console.log(req.body); // JavaScript object containing the parse JSON
+   try{
+    const token = req.headers.authorization.split(' ')[1];
+        const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/userinfo',{headers: {
+            Authorization: `Bearer ${token}`,
+          }});
+    const userInfo = response.data
+    const name = userInfo.nickname;
+    //console.log(name)
+    console.log(req.body)
+    tutorModel.findOneAndUpdate({tutorId: name},   { $push: { 
+        SubjectList: req.body.subj
+      } 
+}).catch((err)=>{
+        //console.log(docs);
+        res.send(err);
+    })
+    .then((docs)=>{
+        console.log(docs)
+        res.send(docs);
+    });
+   }
+   catch
+   {
+    console.log("error")
+   res.send("Ths is wrong") 
+   }
+
+  // res.send("Here");
+   //res.json(req.body.Sri);
+ });
 app.use((req,res,next)=>{
     const error = new Error('not found')
     error.status = 404;
