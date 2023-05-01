@@ -157,7 +157,6 @@ const Home = () => {
         <div>{tutors[0].tutorID}
           <a href="#"></a>
           <div className="about-me">
-            <img src="prof1.png" alt="prof1"></img>
             <div></div>
             <b>About Me</b>: UT Dallas Engineering Professor
             <br></br>
@@ -165,11 +164,11 @@ const Home = () => {
           </div>
         </div>
         <br></br>
+        </a>
         <a href="#">
             <div>Professor Nhut
             <a href="#">
                 <div class="about-me">
-                <img src="prof2.png" alt="prof2"></img>
                 <div></div>
                 <b>About Me</b>: UT Dallas Engineering Professor
                 <br></br>
@@ -178,7 +177,32 @@ const Home = () => {
             </a>
             </div>
         </a>
-  </a>
+
+        <a href="#">
+        <div>Professor Paulk
+          <a href="#">
+            <div class="about-me">
+              <div></div>
+              <b>About Me</b>: UT Dallas Engineering Professor
+              <br></br>
+              <b>Expertise</b>: Project Managment
+            </div>
+            </a>
+        </div> 
+      </a>
+
+      <a href="#">
+        <div>Professor Khan
+          <a href="#">
+            <div class="about-me">
+              <div></div>
+              <b>About Me</b>: UT Dallas Engineering Professor
+              <br></br>
+              <b>Expertise</b>:  Software Engineering
+            </div>
+            </a>
+        </div> 
+      </a>
 
 
 
