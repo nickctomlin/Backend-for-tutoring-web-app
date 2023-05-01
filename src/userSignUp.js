@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import './userSignUp.css';
+
 const UserSignUp = () => {
     const navigate = useNavigate();
     const {user, logout,isAuthenticated  } = useAuth0();
@@ -46,44 +48,29 @@ const  submitButton= ()=>{
       });
     //navigate("/");
 }
-  return (
-    <div>
-   { isAuthenticated && 
-   <div>
-    <div>
-            <input 
-            type="text" 
-            name="UTDID" 
-            onChange={UTDIDHandler} 
-            placeholder="UTDID" 
-            value={UTDID}/>
-
-            <br/>
-
-            <input 
-            type="text" 
-            name="ExpectedGradDate" 
-            onChange={expecHandler} 
-            placeholder="Expected Grad Date" 
-            value={ExpectedGradDate}/>
-
-            <br/>
-
-            <input 
-            type="text" 
-            name="major" 
-            onChange={majorHandler} 
-            placeholder="Major" 
-            value={major}/>
-
-            <br/>
-
-            <button onClick={submitButton}>Submit Now</button>
+return (
+  <div>
+    {isAuthenticated && 
+      <div className="form-container">
+        <div className="loginbox">
+        <legend className="title">User Sign-Up</legend>
+        <label for="username">UTD ID</label>
+        <input type="text" name="UTD ID" onChange={UTDIDHandler} placeholder="UTDID" value={UTDID} required/>
+        <label for="password">Expected Graduation Date</label>
+        <input type="text" name="ExpectedGradDate" onChange={expecHandler} placeholder="Expected Grad Date" value={ExpectedGradDate} required/>
+        <label for="password">Major</label>
+        <input type="text" name="major" onChange={majorHandler} placeholder="Major" value={major} required/>
+        <button className="submit-button" onClick={submitButton}>Submit Now</button>
+        <div class="signup-links">
+				<a href="TutorSU.html">Sign Up as Tutor</a>
+				<a href="login.html">Back to Login</a>
+            </div>
         </div>
-   </div>
+      </div>
     }
-    </div>
-  );
+  </div>
+);
+
 };
 
 export default UserSignUp;
