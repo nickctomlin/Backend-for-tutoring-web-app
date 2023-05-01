@@ -57,7 +57,7 @@ const TutorList= () => {
   }
     return (
       <div>
-  <section className="page-section bg-light" id="tutorlist">
+  <section className="page-section bg-dark" id="tutorlist">
   <h1><center>Tutoring Listing</center></h1>
       {tutors}
 </section>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import TutorList from './TutorList';
+import Appointments from './Appointments';
 
 const Home = () => {
 
@@ -136,82 +137,7 @@ const Home = () => {
   </section>
 
   <TutorList/>
-
-
-  <section className="page-section bg-light" id="appointments">
-      <h1><center>Tutoring Appointments</center></h1>
-      <div className="appointment" data-id="1">
-        <h2>Math Tutoring</h2>
-        <p><strong>Tutor:</strong> John Doe</p>
-        <p><strong>Time:</strong> Feb 16th, 2023 @ 2:00 PM - 3:00 PM</p>
-        <p><strong>Location:</strong> Room 101</p>
-        <button class ="cancel-btn">Cancel Appointment</button>
-      </div>
-      <div className="appointment" data-id="2">
-        <h2>English Tutoring</h2>
-        <p><strong>Tutor:</strong> Jane Smith</p>
-        <p><strong>Time:</strong> Mar 2nd, 2023 @ 3:00 PM - 4:00 PM</p>
-        <p><strong>Location:</strong> Library Room 205</p>
-        <button class ="cancel-btn">Cancel Appointment</button>
-        </div>
-      <div className="appointment" data-id="3">
-        <h2>Science Tutoring</h2>
-        <p><strong>Tutor:</strong> Michael Lee</p>
-        <p><strong>Date/Time:</strong> Feb 24, 2023 @ 4:00 PM - 5:00 PM</p>
-        <p><strong>Location:</strong> Room 202</p>
-        <button class ="cancel-btn">Cancel Appointment</button>
-      </div>
-      <div className="appointment" data-id="4">
-        <h2>History Tutoring</h2>
-        <p><strong>Tutor:</strong> Sarah Johnson</p>
-        <p><strong>Time:</strong> Feb 29th, 2023 @ 5:00 PM - 6:00 PM</p>
-        <p><strong>Location:</strong> Room 303</p>
-        <button class ="cancel-btn">Cancel Appointment</button>
-      </div>
-  </section>
-  <section className="page-section bg-light" id="team">
-      <div className="container">
-          <div className="text-center">
-              <h2 className="section-heading text-uppercase">Our Team</h2>
-              <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-          </div>
-          <div className="row">
-              <div className="col-lg-4">
-                  <div className="team-member">
-                      <img className="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="..." />
-                      <h4>Parveen Anand</h4>
-                      <p className="text-muted">Lead Designer</p>
-                      <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i className="fab fa-twitter"></i></a>
-                      <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i className="fab fa-facebook-f"></i></a>
-                      <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i className="fab fa-linkedin-in"></i></a>
-                  </div>
-              </div>
-              <div className="col-lg-4">
-                  <div className="team-member">
-                      <img className="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="..." />
-                      <h4>Diana Petersen</h4>
-                      <p className="text-muted">Lead Marketer</p>
-                      <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Twitter Profile"><i className="fab fa-twitter"></i></a>
-                      <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Facebook Profile"><i className="fab fa-facebook-f"></i></a>
-                      <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen LinkedIn Profile"><i className="fab fa-linkedin-in"></i></a>
-                  </div>
-              </div>
-              <div className="col-lg-4">
-                  <div className="team-member">
-                      <img className="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
-                      <h4>Larry Parker</h4>
-                      <p className="text-muted">Lead Developer</p>
-                      <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i className="fab fa-twitter"></i></a>
-                      <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i className="fab fa-facebook-f"></i></a>
-                      <a className="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i className="fab fa-linkedin-in"></i></a>
-                  </div>
-              </div>
-          </div>
-          <div className="row">
-              <div className="col-lg-8 mx-auto text-center"><p className="large text-muted">The following project was made for CS Project 4485. The contributers include Sri Vemugunta, Sam Krovvidi, Ayush Gopisetty, Sreya Nagumalla, Nicholas Tomlin</p></div>
-          </div>
-      </div>
-  </section>
+  <Appointments/>
 
   {/* <div className="py-5">
       <div className="container">
