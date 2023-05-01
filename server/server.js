@@ -200,6 +200,20 @@ app.get('/tutors/:Id', function (req, res){
         res.send(docs);
     });
 });
+app.get('/tutorsByFavorite/:Favorite', function (req, res){
+    Favorite= req.params.Favorite;
+    console.log("In Tutors by Favorites");
+    console.log(Favorite);
+    //res.send(ID)
+    tutorModel.find({ SubjectList:  Favorite}).catch((err)=>{
+        //console.log(docs);
+        res.send(err);
+    })
+    .then((docs)=>{
+        console.log(docs)
+        res.send(docs);
+    });
+});
 app.get('/user/:Id', function (req, res){
     ID = req.params.Id;
     console.log(ID);
