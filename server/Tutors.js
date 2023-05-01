@@ -35,6 +35,10 @@ avaliableTime: [{
       default:null},
       end:{type: Number,
         default:null},
+        count:{
+            type: Number,
+            default:0
+        },
         isFilled:{type:Boolean,
         default:false},
     }

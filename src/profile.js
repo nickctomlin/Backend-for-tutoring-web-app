@@ -18,7 +18,14 @@ async function callProtectedApi(){
  // console.log("Is Authooo")
 const token = await getAccessTokenSilently();
 //console.log(token);
-const response =  await axios.post("http://localhost:4000/userAppointments",{ appointment: 'New Appointment' },{headers: {
+const response =  await axios.post("http://localhost:4000/addReservation",{ index:0, tutor:"Nick",obj:{
+  AppointmentID:"Nick"+user.nickname,
+    StudentuserName:user.nickname,
+    TeacherID:"Nick" ,
+    date:"2018-07-22",
+    start:0,
+    end:2
+}  },{headers: {
     authorization: `Bearer ${token}`,
   }
 });
@@ -41,10 +48,10 @@ console.log(response.data);
       </div> */
     )}
 
-    {/* <ul>
+    { <ul>
       <li><button onClick={callApi}>Call Api Route</button></li>
       <li><button onClick={callProtectedApi}>Call Protected Api</button></li> 
-    </ul> */}
+    </ul> }
     </div>
   );
 };
