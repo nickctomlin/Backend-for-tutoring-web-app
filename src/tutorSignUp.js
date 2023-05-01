@@ -38,10 +38,18 @@ const TutorSignUp = () => {
     
   setHours( e.target.value )
   } 
+
+  const addButton = () =>{
+
+  }
   const majorstaughtHandler = (e) =>{
     //console.log(e.target.value);
     
   setTaught( e.target.value )
+  }
+
+  const addDate = (e) =>{
+
   }
   const  submitButton= ()=>{
     //console.log("Here in Try for User")
@@ -51,7 +59,8 @@ const TutorSignUp = () => {
         password: "Test",
         tutorID: TutorID,
         ExpectedGradDate: ExpectedGradDate,
-        major: major
+        major: major,
+        daysAvailable: daysAvailable
       }, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -71,15 +80,35 @@ const TutorSignUp = () => {
       <div className="form-container">
         <div className="loginbox">
         <legend className="title">Tutor Sign-Up</legend>
-        <label for="username">UTD ID</label>
-        <input type="text" name="UTD ID" onChange={TutorIDHandler} placeholder="UTDID" value={TutorID} required/>
+        <label for="username">Tutor ID</label>
+        <input type="text" name="UTD ID" onChange={TutorIDHandler} placeholder="Tutor ID" value={TutorID} required/>
         <label for="password">Expected Graduation Date</label>
         <input type="text" name="ExpectedGradDate" onChange={expecHandler} placeholder="Expected Grad Date" value={ExpectedGradDate} required/>
         <label for="Major">Major</label>
         <input type="text" name="major" onChange={majorHandler} placeholder="Major" value={major} required/>
-        <label for="Date Available">Date Available</label>
-        <input type="date" id="start" name="Start Date" />
-        <button className="submit-button" onClick={submitButton}>Submit Now</button>
+        <label type="What you Tutor?">What You Tutor?</label>
+        <div className='addMajor'>
+          <input type="text" name="majorsTaught" onChange={majorstaughtHandler} placeHolder="Ex. Computer Science" value={majorsTaught} required />
+          <button className="AddMajor" onClick={addButton}>Add Major</button>
+        </div>
+        <form className='available' style={{margin: '10px', padding: '10px'}}>
+          <label for="Date Available">Days and Times Available</label>
+          <label>Choose Day: </label>
+          <select name="Day" id="Day" style={{margin: '5px', padding: '5px'}}>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Tuesday">Friday</option>
+            <option value="Wednesday">Saturday</option>
+            <option value="Thursday">Sunday</option>
+          </select>
+          <label>From: </label>
+          <input type="time" style={{margin: '5px', padding: '5px'}}/>
+          <label>To: </label>
+          <input type="time" style={{margin: '5px', padding: '5px'}}/>
+        </form>
+        <button className="submit-button" onClick={submitButton}>Submit</button>
         <div class="signup-links">
 				<a href="TutorSU.html">Sign Up as Student</a>
 				<a href="login.html">Back to Login</a>

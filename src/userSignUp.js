@@ -61,10 +61,6 @@ return (
         <label for="password">Major</label>
         <input type="text" name="major" onChange={majorHandler} placeholder="Major" value={major} required/>
         <button className="submit-button" onClick={submitButton}>Submit Now</button>
-        <div class="signup-links">
-				<a href="TutorSU.html">Sign Up as Tutor</a>
-				<a href="login.html">Back to Login</a>
-            </div>
         </div>
       </div>
     }

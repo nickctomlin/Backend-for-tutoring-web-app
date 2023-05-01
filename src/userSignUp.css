@@ -7,6 +7,31 @@
   padding: 20rem;
   }
   
+.loginbox input{
+  justify-content: center;
+}
+
+.addMajor {
+  display: flex;
+  align-items: center;
+}
+.available {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.available label {
+  margin-right: 10px;
+}
+
+.available select,
+.available input[type="time"] {
+  margin-right: 10px;
+  padding: 5px;
+  width: 150px;
+}
   .form-container input {
     padding: 10px;
     margin-bottom: 20px;
@@ -14,6 +39,7 @@
     border-radius: 5px;
     width: 300px;
     }
+
   
     input[type = "text"]{
       width: 100%;
