@@ -77,6 +77,37 @@ catch{
    res.send("Ths is wrong") 
 }
 });
+app.get('/returnReservations',jwtCheck, async function (req, res) {
+    try{
+        const token = req.headers.authorization.split(' ')[1];
+        const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/userinfo',{headers: {
+            Authorization: `Bearer ${token}`,
+          }});
+    const userInfo = response.data
+    const name = userInfo.nickname;
+    var ret = [];
+    userModel.findOne({userName: name}).catch((err)=>{
+        //console.log(docs);
+        res.send(err);
+    })
+    .then((docs)=>{
+        var upComing = docs.upcomingAppointments;
+        console.log(upComing);
+        upComing.forEach(user => {appointmentModel.findOne({AppointmentID: user}).then((docs)=>{
+            //console.log("In user " + user)
+            //console.log(docs);
+            ret.push(docs);
+        })})
+       while(ret==null)
+       {}
+       res.send(ret);
+    });
+}
+catch{
+   console.log("error")
+   res.send("Ths is wrong") 
+}
+});
 app.get('/check1',jwtCheck, async function (req, res) {
     var send = "Neither";
     try{
@@ -139,6 +170,7 @@ app.get('/reservations/:id',jwtCheck, async function (req, res) {
         res.send(docs);
     });
 });
+
 app.post('/reservations',urlencodedParser, (req, res) => {
     req.body; // JavaScript object containing the parse JSON
     const doc = new appointmentModel(req.body);
@@ -153,15 +185,26 @@ app.post('/reservations',urlencodedParser, (req, res) => {
 app.get('/tutors', function (req, res){
     tutorModel.find({}).then(function (users) {
         res.send(users);
-        //console.log(users)
         });
 });
-
 app.get('/tutors/:Id', function (req, res){
     ID = req.params.Id;
     console.log(ID);
     //res.send(ID)
     tutorModel.findOne({tutorId: ID}).catch((err)=>{
+        //console.log(docs);
+        res.send(err);
+    })
+    .then((docs)=>{
+        console.log(docs)
+        res.send(docs);
+    });
+});
+app.get('/user/:Id', function (req, res){
+    ID = req.params.Id;
+    console.log(ID);
+    //res.send(ID)
+    userModel.findOne({userName: ID}).catch((err)=>{
         //console.log(docs);
         res.send(err);
     })
@@ -288,7 +331,7 @@ const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/use
      }});
 const userInfo = response.data
 const name = userInfo.nickname;
-console.log("Name is " + name)
+//console.log("Name is " + name)
 //console.log(req.body)
 var Nname = tutor+name;
 userModel.findOneAndUpdate({userName: name},   { $push: { 
