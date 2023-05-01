@@ -13,9 +13,7 @@ const TutorList= () => {
                console.log("Here At Not Tutor List")
                console.log(t);
              setTutors(          <div className="flex-container">
-
               {t.map(tutor => (
-                
         <a href="#">
         <div>{tutor.tutorId}
           <a href="#">
@@ -23,7 +21,10 @@ const TutorList= () => {
               <div></div>
               <b>About Me</b>: {tutor.aboutMe} 
               <br></br>
-              <b>Expertise</b>: Project Managment
+              <b>Expertise</b>: 
+               <ul>
+           {tutor.SubjectList.map(element => <li >{element}</li>)}
+           </ul>
             </div>
             </a>
         </div> 
