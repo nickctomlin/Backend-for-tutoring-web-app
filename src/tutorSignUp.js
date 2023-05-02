@@ -10,8 +10,10 @@ const TutorSignUp = () => {
   const [ExpectedGradDate , setExpectedGradDate] = useState();
   const [major , setMajor] = useState();
   const [daysAvailable, setdaysAvailable] = useState();
-  const [hoursAvailable, setHours] = useState();
+  const [hoursFrom, setHoursFrom] = useState();
+  const [hoursTo, setHoursTo] = useState();
   const [majorsTaught, setTaught] = useState();
+
 
   const TutorIDHandler = (e) =>{
     // console.log(e.target.value);
@@ -33,10 +35,16 @@ const TutorSignUp = () => {
     
   setdaysAvailable( e.target.value )
   }
-  const sethoursHandler = (e) =>{
+  const hoursFromHandler = (e) =>{
     //console.log(e.target.value);
     
-  setHours( e.target.value )
+  setHoursFrom( e.target.value )
+  } 
+
+  const hoursToHandler = (e) =>{
+    //console.log(e.target.value);
+    
+  setHoursTo( e.target.value )
   } 
 
   const addButton = () =>{
@@ -108,26 +116,29 @@ const TutorSignUp = () => {
         <label type="What you Tutor?">What You Tutor?</label>
         <div className='addMajor'>
           <input type="text" name="majorsTaught" onChange={majorstaughtHandler} placeHolder="Ex. Computer Science" value={majorsTaught} required />
-          <button className="AddMajor" onClick={addButton}>Add Major</button>
+          <button className="AddMajor" onClick={addButton}>Add Subject</button>
         </div>
         <form className='available' style={{margin: '10px', padding: '10px'}}>
           <label for="Date Available">Days and Times Available</label>
           <label>Choose Day: </label>
-          <select name="Day" id="Day" style={{margin: '5px', padding: '5px'}}>
+          <select name="Day" id="Day" style={{margin: '5px', padding: '5px'}} onChange={daysAvailableHandler} value={daysAvailable} required>
             <option value="Monday">Monday</option>
             <option value="Tuesday">Tuesday</option>
             <option value="Wednesday">Wednesday</option>
             <option value="Thursday">Thursday</option>
-            <option value="Tuesday">Friday</option>
-            <option value="Wednesday">Saturday</option>
-            <option value="Thursday">Sunday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
           </select>
           <label>From: </label>
-          <input type="time" style={{margin: '5px', padding: '5px'}}/>
+          <input type="time" style={{margin: '5px', padding: '5px'}} onChange={hoursFromHandler} value={hoursFrom} required/>
           <label>To: </label>
-          <input type="time" style={{margin: '5px', padding: '5px'}}/>
+          <input type="time" style={{margin: '5px', padding: '5px'}} onChange={hoursToHandler} value={hoursTo} required/>
+          <button className='addTime' onClick={addButton}>Add Time</button>
         </form>
+        <label for="Image File">Upload your Profile Photo: </label>
         <input type="file" name="file" onChange={handleImage}/>
+        <br></br>
         <button className="submit-button" onClick={clickHandler}>Submit</button>
         <div class="signup-links">
 				<a href="TutorSU.html">Sign Up as Student</a>
