@@ -38,6 +38,7 @@ const  subjSubmitButton= async ()=>{
       <Masonry>
       {nT.map(tutor => (
 <div style={{color: "white"}}>
+  <div className='box'>
   <h2>{tutor.tutorId}</h2>
   <a>
     <div>
@@ -50,6 +51,7 @@ const  subjSubmitButton= async ()=>{
    </ul>
     </div>
     </a>
+    </div>
 </div> 
       ))}
     </Masonry>
@@ -75,6 +77,8 @@ const  subjSubmitButton= async ()=>{
         <Masonry>
         {
   <div style={{color: "white"}}>
+    <center>
+    <div className='box'>
     <h2>{nT.tutorId}</h2>
     <a>
         <div className="about-me">
@@ -87,6 +91,8 @@ const  subjSubmitButton= async ()=>{
      </ul>
       </div>
       </a>
+      </div>
+      </center>
   </div> 
   }
       </Masonry>
@@ -107,7 +113,8 @@ const  resetButton= ()=>{
           setTutors(
            <Masonry>
            {t.map(tutor => (
-     <div style={{color: "white"}} className="box">
+     <div style={{color: "white"}}>
+      <div className='box'>
        <h2>{tutor.tutorId}</h2>
        <a>
          <div className="about-me">
@@ -120,6 +127,7 @@ const  resetButton= ()=>{
         </ul>
          </div>
          </a>
+         </div>
      </div> 
            ))}
          </Masonry>
@@ -185,6 +193,7 @@ const  resetButton= ()=>{
     return (
   <div style={{padding: "25px 50px 25px 50px"}} >
     <section id="findtutors">
+    <h1><center>Find Tutors</center></h1>
     <div className="form-container">
         <div className="searchBox">
         <legend className="title">Search Tutor Name</legend>
