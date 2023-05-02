@@ -205,7 +205,7 @@ const  resetButton= ()=>{
         <div className="searchBox">
         <legend className="title">Search for Subject</legend>
         <label for="subject">Subject Name</label>
-        <input type="text" onChange={subjHandler} placeholder="Tutor Name" value={subject} required/>
+        <input type="text" onChange={subjHandler} placeholder="Subject Name" value={subject} required/>
         <button className="submit-button" onClick={subjSubmitButton}>Search</button>
         <button onClick={resetButton} style={{ marginLeft: "10px" }}>Reset Button</button>
         </div>
