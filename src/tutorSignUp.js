@@ -40,7 +40,7 @@ const TutorSignUp = () => {
   } 
 
   const addButton = () =>{
-
+    
   }
   const majorstaughtHandler = (e) =>{
     //console.log(e.target.value);
@@ -51,7 +51,7 @@ const TutorSignUp = () => {
   const addDate = (e) =>{
 
   }
-  
+
   const  submitButton= ()=>{
     //console.log("Here in Try for User")
     //console.log(user1);
@@ -127,6 +127,7 @@ const TutorSignUp = () => {
           <input type="time" style={{margin: '5px', padding: '5px'}}/>
           <label>To: </label>
           <input type="time" style={{margin: '5px', padding: '5px'}}/>
+          <button className='addTime' onClick={addButton}>Add Time</button>
         </form>
         <input type="file" name="file" onChange={handleImage}/>
         <button className="submit-button" onClick={clickHandler}>Submit</button>
