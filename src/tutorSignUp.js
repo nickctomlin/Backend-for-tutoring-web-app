@@ -74,6 +74,25 @@ const TutorSignUp = () => {
       });
     //navigate("/");
   }
+  const [image,setImage] = useState();
+  function handleImage(e) {
+    console.log(e.target.files)
+    setImage(e.target.files[0])
+  }
+  function handleApi()
+  {
+    const formData = new FormData()
+    formData.append('image', image)
+    axios.post('url', formData).then((res) => {
+      console.log(res)
+    })
+  }
+
+  function clickHandler () {
+    handleApi();
+    submitButton();
+  }
+
   return (
     <div>
     {isAuthenticated && 
@@ -108,7 +127,8 @@ const TutorSignUp = () => {
           <label>To: </label>
           <input type="time" style={{margin: '5px', padding: '5px'}}/>
         </form>
-        <button className="submit-button" onClick={submitButton}>Submit</button>
+        <input type="file" name="file" onChange={handleImage}/>
+        <button className="submit-button" onClick={clickHandler}>Submit</button>
         <div class="signup-links">
 				<a href="TutorSU.html">Sign Up as Student</a>
 				<a href="login.html">Back to Login</a>
