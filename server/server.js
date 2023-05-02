@@ -93,14 +93,63 @@ app.get('/returnReservations',jwtCheck, async function (req, res) {
     .then((docs)=>{
         var upComing = docs.upcomingAppointments;
         console.log(upComing);
-        upComing.forEach(user => {appointmentModel.findOne({AppointmentID: user}).then((docs)=>{
-            //console.log("In user " + user)
-            //console.log(docs);
-            ret.push(docs);
-        })})
-       while(ret==null)
-       {}
-       res.send(ret);
+        var bar = new Promise((resolve, reject) => {
+            upComing.forEach((value, index, array) => {
+                appointmentModel.findOne({AppointmentID: value}).then((docs)=>{
+                    ret.push(docs);
+                    if (index === array.length -1) resolve();
+                })
+            });
+        });
+        
+        bar.then(() => {
+            console.log("Done");
+            res.send(ret);
+        });
+        //while(t == 0)
+      // 
+        //console.log("t is "+t);
+       //res.send(ret);
+    });
+}
+catch{
+   console.log("error")
+   res.send("Ths is wrong") 
+}
+});
+app.get('/returnFavorites',jwtCheck, async function (req, res) {
+    try{
+        const token = req.headers.authorization.split(' ')[1];
+        const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/userinfo',{headers: {
+            Authorization: `Bearer ${token}`,
+          }});
+    const userInfo = response.data
+    const name = userInfo.nickname;
+    var ret = [];
+    userModel.findOne({userName: name}).catch((err)=>{
+        //console.log(docs);
+        res.send(err);
+    })
+    .then((docs)=>{
+        var favList = docs.favoriteList;
+        console.log(favList);
+        var bar = new Promise((resolve, reject) => {
+            favList.forEach((value, index, array) => {
+                tutorModel.findOne({tutorId: value}).then((docs)=>{
+                    ret.push(docs);
+                    if (index === array.length -1) resolve();
+                })
+            });
+        });
+        
+        bar.then(() => {
+            console.log("Done");
+            res.send(ret);
+        });
+        //while(t == 0)
+      // 
+        //console.log("t is "+t);
+       //res.send(ret);
     });
 }
 catch{
