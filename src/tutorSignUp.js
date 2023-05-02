@@ -136,9 +136,7 @@ const TutorSignUp = () => {
           <input type="time" style={{margin: '5px', padding: '5px'}} onChange={hoursToHandler} value={hoursTo} required/>
           <button className='addTime' onClick={addButton}>Add Time</button>
         </form>
-        <label for="Image File">Upload your Profile Photo: </label>
         <input type="file" name="file" onChange={handleImage}/>
-        <br></br>
         <button className="submit-button" onClick={clickHandler}>Submit</button>
         <div class="signup-links">
 				<a href="TutorSU.html">Sign Up as Student</a>
