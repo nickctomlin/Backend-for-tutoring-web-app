@@ -1,40 +1,58 @@
-
-import React from 'react'
-
+import React, { useState, useEffect } from 'react';
+import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
 const Appointments = () => {
+  const { logout,isAuthenticated,getAccessTokenSilently  } = useAuth0();
+  var a;
+  const [appointments, setAppointments] = useState(<div></div>);
+  useEffect(() => {
+    callApi().then(()=>{
+     //console.log(checker);
+   if (a != null) {
+             console.log("Here At Appointments")
+             console.log(a);
+           setAppointments(
+            <section className="page-section bg-light" id="appointments">
+      <h1><center>Tutoring Appointments</center></h1>
+            {a.map(app => (
+              <div className="appointment" data-id="1">
+        <h2>Appointment at </h2>{app.date}
+        <p><strong>Tutor:</strong> {app.TeacherID}</p>
+        <p><strong>Student:</strong> {app.StudentuserName}</p>
+        <button class ="cancel-btn">Cancel Appointment</button>
+      </div>
+            ))}
+              </section>
+          );
+         } else
+         {
+          console.log("Mistake");
+         }
+ 
+ });
+   }, [isAuthenticated]);
+   async function callApi(){
+    try {
+        
+        //console.log("Is Authooo")
+const token = await getAccessTokenSilently();
+//console.log(token);
+const response =  await await axios.get('http://localhost:4000/returnReservations', {
+  headers: {
+    authorization: `Bearer ${token}`,
+  }
+});
+console.log(response.data);
+a = response.data;
+//console.log(checker);
+    }catch (error) {
+        console.log(error.message);
+    }
+
+}
         return (
           <div>
-           <section className="page-section bg-light" id="appointments">
-      <h1><center>Tutoring Appointments</center></h1>
-      <div className="appointment" data-id="1">
-        <h2>Math Tutoring</h2>
-        <p><strong>Tutor:</strong> John Doe</p>
-        <p><strong>Time:</strong> Feb 16th, 2023 @ 2:00 PM - 3:00 PM</p>
-        <p><strong>Location:</strong> Room 101</p>
-        <button class ="cancel-btn">Cancel Appointment</button>
-      </div>
-      <div className="appointment" data-id="2">
-        <h2>English Tutoring</h2>
-        <p><strong>Tutor:</strong> Jane Smith</p>
-        <p><strong>Time:</strong> Mar 2nd, 2023 @ 3:00 PM - 4:00 PM</p>
-        <p><strong>Location:</strong> Library Room 205</p>
-        <button class ="cancel-btn">Cancel Appointment</button>
-        </div>
-      <div className="appointment" data-id="3">
-        <h2>Science Tutoring</h2>
-        <p><strong>Tutor:</strong> Michael Lee</p>
-        <p><strong>Date/Time:</strong> Feb 24, 2023 @ 4:00 PM - 5:00 PM</p>
-        <p><strong>Location:</strong> Room 202</p>
-        <button class ="cancel-btn">Cancel Appointment</button>
-      </div>
-      <div className="appointment" data-id="4">
-        <h2>History Tutoring</h2>
-        <p><strong>Tutor:</strong> Sarah Johnson</p>
-        <p><strong>Time:</strong> Feb 29th, 2023 @ 5:00 PM - 6:00 PM</p>
-        <p><strong>Location:</strong> Room 303</p>
-        <button class ="cancel-btn">Cancel Appointment</button>
-      </div>
-  </section>
+      {appointments}
   </div>
         );
     };
