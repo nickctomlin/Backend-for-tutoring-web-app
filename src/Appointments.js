@@ -12,7 +12,7 @@ const Appointments = () => {
              console.log("Here At Appointments")
              console.log(a);
            setAppointments(
-            <section className="page-section bg-light" id="appointments">
+            <section className="page-section bg-dark" id="appointments">
       <h1><center>Tutoring Appointments</center></h1>
             {a.map(app => (
               <div className="appointment" data-id="1">
