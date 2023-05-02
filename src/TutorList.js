@@ -193,7 +193,7 @@ const  resetButton= ()=>{
     return (
   <div style={{padding: "25px 50px 25px 50px"}} >
     <section id="findtutors">
-    <h1><center>Find Tutors</center></h1>
+    <h1><center>Find the Tutor for You</center></h1>
     <div className="form-container">
         <div className="searchBox">
         <legend className="title">Search Tutor Name</legend>
