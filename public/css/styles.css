@@ -85,6 +85,18 @@
   box-sizing: border-box;
 }
 
+.box {
+  width: 300px;
+  height: 250px;
+  background-color: darkorange;
+  border: 2px solid #154734;
+  padding: 10px;
+  margin: 10px;
+  float: left;
+  border-radius: 5px;
+  display: block;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;

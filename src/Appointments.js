@@ -100,7 +100,8 @@ a = response.data;
 }
         return (
           <div>
-          <div className="form-container">
+        {appointments}
+        <div className="form-container">
         <div className="searchBox">
         <legend className="title">Cancel An Appointment</legend>
         <label for="tutorId">Appointment ID</label>
@@ -108,7 +109,6 @@ a = response.data;
         <button className="submit-button" onClick={submitButton}>Search</button>
         </div>
       </div>
-      {appointments}
   </div>
         );
     };

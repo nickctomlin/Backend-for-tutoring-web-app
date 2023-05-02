@@ -39,8 +39,8 @@ const  subjSubmitButton= async ()=>{
       {nT.map(tutor => (
 <div style={{color: "white"}}>
   <h2>{tutor.tutorId}</h2>
-  <a href="#">
-    <div class="about-me">
+  <a>
+    <div>
       <div></div>
       <b>About Me</b>: {tutor.aboutMe} 
       <br></br>
@@ -76,8 +76,8 @@ const  subjSubmitButton= async ()=>{
         {
   <div style={{color: "white"}}>
     <h2>{nT.tutorId}</h2>
-    <a href="#">
-      <div class="about-me">
+    <a>
+        <div className="about-me">
         <div></div>
         <b>About Me</b>: {nT.aboutMe} 
         <br></br>
@@ -107,10 +107,10 @@ const  resetButton= ()=>{
           setTutors(
            <Masonry>
            {t.map(tutor => (
-     <div style={{color: "white"}}>
+     <div style={{color: "white"}} className="box">
        <h2>{tutor.tutorId}</h2>
-       <a href="#">
-         <div class="about-me">
+       <a>
+         <div className="about-me">
            <div></div>
            <b>About Me</b>: {tutor.aboutMe} 
            <br></br>
@@ -142,9 +142,10 @@ const  resetButton= ()=>{
               <Masonry>
               {t.map(tutor => (
         <div style={{color: "white"}}>
+          <div className='box'>
           <h2>{tutor.tutorId}</h2>
-          <a href="#">
-            <div class="about-me">
+          <a>
+            <div className="about-me">
               <div></div>
               <b>About Me</b>: {tutor.aboutMe} 
               <br></br>
@@ -154,6 +155,7 @@ const  resetButton= ()=>{
            </ul>
             </div>
             </a>
+            </div>
         </div> 
               ))}
             </Masonry>
@@ -206,6 +208,8 @@ const  resetButton= ()=>{
   columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}}
 >
 <section id="tutorlist">
+<h1><center>Tutor List</center></h1>
+<br></br>
 {tutors}
 </section>
 </ResponsiveMasonry>
