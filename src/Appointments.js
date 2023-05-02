@@ -14,6 +14,7 @@ const Appointments = () => {
            setAppointments(
             <section className="page-section bg-dark" id="appointments">
       <h1><center>Tutoring Appointments</center></h1>
+      <br></br>
             {a.map(app => (
               <div className="appointment" data-id="1">
         <h2>Appointment at </h2>{app.date}

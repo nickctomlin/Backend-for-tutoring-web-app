@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import TutorList from './TutorList';
 import Appointments from './Appointments';
+import FavoriteList from './FavoriteList';
 
 const Home = () => {
 
@@ -11,6 +12,7 @@ const Home = () => {
 
   <TutorList/>
   <Appointments/>
+  <FavoriteList/>
 
   {/* <div className="py-5">
       <div className="container">
