@@ -182,6 +182,7 @@ const  resetButton= ()=>{
   }
     return (
   <div style={{padding: "25px 50px 25px 50px"}} >
+    <section id="findtutors">
     <div className="form-container">
         <div className="searchBox">
         <legend className="title">Search Tutor Name</legend>
@@ -200,10 +201,13 @@ const  resetButton= ()=>{
         <button onClick={resetButton} style={{ marginLeft: "10px" }}>Reset Button</button>
         </div>
       </div>
+      </section>
   <ResponsiveMasonry
   columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}}
 >
+<section id="tutorlist">
 {tutors}
+</section>
 </ResponsiveMasonry>
 </div>
     );

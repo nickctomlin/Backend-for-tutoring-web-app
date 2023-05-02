@@ -3,7 +3,7 @@ import React from 'react'
 const FavoriteList = () => {
         return (
           <div>
-           <section>
+           <section id="favorites">
     <div className="container">
       <h1>Favorites List</h1>
       <br></br>
