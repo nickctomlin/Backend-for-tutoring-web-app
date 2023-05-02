@@ -17,6 +17,7 @@ function App()  {
     <SignUp/>
     {/* <LogoutButton/> */}
   </div>
+  //Popup Button
   //return <button onClick={() => loginWithPopup()}>Log In With loginWithPopup</button>
   );
 };
