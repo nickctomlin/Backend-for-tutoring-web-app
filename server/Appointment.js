@@ -22,6 +22,9 @@ start: {type: Number,
 },
 end:{type: Number,
       default:null},
+opId:{type:String,
+required:true,
+}
 });
 const Appointment= mongoose.model("Appointment", AppointmentSchema);
 module.exports = Appointment;

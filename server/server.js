@@ -498,6 +498,105 @@ else
   // res.send("Here");
    //res.json(req.body.Sri);
  });
+ app.get('/cancelAppointment/:Cancel',jwtCheck,express.json(), async (req, res) => { 
+    console.log("In Cancel Appointments")
+    cancel = req.params.Cancel;
+   //console.log(req.body); // JavaScript object containing the parse JSON
+   try{
+    const token = req.headers.authorization.split(' ')[1];
+        const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/userinfo',{headers: {
+            Authorization: `Bearer ${token}`,
+          }});
+    const userInfo = response.data
+    const name = userInfo.nickname;
+    //console.log(name)
+    //console.log(req.body)
+    //var appDoc;
+   var resDoc =await appointmentModel.findOne({AppointmentID: cancel});
+    console.log("Teacher is " + resDoc.TeacherID);
+    console.log("opId is " + resDoc.opId)
+   // console.log("Stuck Here");
+userModel.findOneAndUpdate({userName: name},   { $pull: { 
+        upcomingAppointments: cancel
+      } 
+}).catch((err)=>{
+        //console.log(docs);
+        res.send(err);
+    })
+    .then((docs)=>{
+        console.log(docs)
+        //res.send(docs);
+    });
+   TutModel = await tutorModel.findOneAndUpdate({tutorId: resDoc.TeacherID},   { $pull: { 
+        upcomingAppointments: cancel
+      } 
+});
+var i;
+console.log("We Are Here");
+console.log("TutModel avaliable time is " + TutModel.avaliableTime);
+console.log("Length is " + TutModel.avaliableTime.length)
+/*TutModel.avaliableTime.forEach(value,index)
+{
+    console.log("Number of Times")
+    if(value.opId == resDoc.op)
+    {
+        i = index;
+    }
+}
+*/
+console.log("resDoc is " + resDoc);
+for(var x = 0; x<TutModel.avaliableTime.length;x++)
+{
+    if(TutModel.avaliableTime[x].opId == resDoc.opId)
+    {
+        console.log( "Equal")
+        i = x;
+    }
+}
+//i = 0;
+console.log("I is " + i);
+var placeHolder = "avaliableTime."+i+".openingHours.count";
+console.log("after we set place Holder");
+await tutorModel.findOneAndUpdate({tutorId: resDoc.TeacherID},   { 
+    $inc: { 
+        [placeHolder] : -1
+      } 
+}).catch((err)=>{
+    //console.log(docs);
+    res.send(err);
+})
+.then((docs)=>{
+   // console.log(docs)
+    //res.send(docs);
+    console.log("Finished updating the count ")
+});
+placeHolder = "avaliableTime."+i+".openingHours.isFilled"
+await tutorModel.findOneAndUpdate({tutorId: resDoc.TeacherID},   { 
+[placeHolder]:  false
+}).catch((err)=>{
+    console.log(err);
+    res.send(err);
+})
+.then((docs)=>{
+   // console.log(docs)
+    //res.send(docs);
+    console.log("Finished Updating Place Holder ")
+});
+
+await appointmentModel.deleteOne({ AppointmentID: cancel }).catch(()=>{
+    res.send("Already Deleted");
+});
+res.send("Done");
+   }
+   catch
+   {
+    console.log("error")
+   res.send("Ths is wrong") 
+   }
+
+  // res.send("Here");
+   //res.json(req.body.Sri);
+ });
  app.post('/tutorAppointments',express.json(), async (req, res) => {
     console.log("In Tutor Appointments")
    //console.log(req.body); // JavaScript object containing the parse JSON
