@@ -3,8 +3,9 @@ import axios from "axios";
 import TutorList from './TutorList';
 import Appointments from './Appointments';
 import FavoriteList from './FavoriteList';
+import TotalHours from './TotalHours';
 
-const Home = () => {
+const UserHome = () => {
 
     return (
       <div>
@@ -13,7 +14,7 @@ const Home = () => {
   <TutorList/>
   <Appointments/>
   <FavoriteList/>
-
+  <TotalHours/>
   {/* <div className="py-5">
       <div className="container">
           <div className="row align-items-center">
@@ -36,4 +37,4 @@ const Home = () => {
     );
 };
 
-export default Home
+export default UserHome

@@ -1,26 +1,26 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navigation from './Navigation';
-import Home from './Home';
+import TutorNavigation from "./TutorNavigation";
+import TutorHome from "./TutorHome";
 import AboutUs from './AboutUs';
 import Header from "./Header";
 import Footer from "./Footer";
 import { useAuth0, isAuthenticated} from "@auth0/auth0-react";
 
-function Page()  {
+function TutorPage()  {
   const { loginWithRedirect,loginWithPopup, isAuthenticated } = useAuth0();
 
   return ( 
   <div>
-    <div><Navigation>
+    <div><TutorNavigation>
             <Routes>
-              <Route exact path="/" element={<Home />} />
+              <Route exact path="/" element={<TutorHome />} />
               <Route exact path="/about" element={<AboutUs />} />
             </Routes>
-          </Navigation>
+          </TutorNavigation>
     </div>
     <Header/>
-    <Home/>
+    <TutorHome/>
     <AboutUs/>
     <Footer/>
   </div>
@@ -28,4 +28,4 @@ function Page()  {
   );
 };
 
-export default Page;
+export default TutorPage;

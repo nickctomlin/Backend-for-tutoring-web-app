@@ -2,7 +2,8 @@ import React, {useState, useEffect, useMemo} from 'react'
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Page from './Page';
+import UserPage from './UserPage';
+import TutorPage from './TutorPage';
 const SignUp = () => {
     const navigate = useNavigate();
   const { user, isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0();
@@ -31,11 +32,11 @@ const SignUp = () => {
         } else if (checker === "User") {
             console.log("Here At User")
           
-            setR(<div><Page/></div>);
+            setR(<div><UserPage/></div>);
           
         } else if (checker === "Tutor"){
           
-            setR(<div><Page/></div>);
+            setR(<div><TutorPage/></div>);
           
      }
     

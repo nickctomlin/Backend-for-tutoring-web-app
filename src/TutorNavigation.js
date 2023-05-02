@@ -3,7 +3,7 @@ import { useAuth0, isAuthenticated} from "@auth0/auth0-react";
 import LogoutButton from "./logout";
 import Profile from "./profile";
 
-const Navigation = () => {
+const TutorNavigation = () => {
     const { user, loginWithRedirect,loginWithPopup, isAuthenticated } = useAuth0();
 
     return (
@@ -19,11 +19,7 @@ const Navigation = () => {
                 
                 <div className="collapse navbar-collapse" id="navbarResponsive">
                     <ul className="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li className="nav-item"><a className="nav-link" href="#findtutors">Find Tutors</a></li>
-                        <li className="nav-item"><a className="nav-link" href="#portfolio">Book Appointments</a></li>
                         <li className="nav-item"><a className="nav-link" href="#appointments">Tutoring Appointments</a></li>
-                        <li className="nav-item"><a className="nav-link" href="#tutorlist">Tutor List</a></li>
-                        <li className="nav-item"><a className="nav-link" href="#favorites">Favorites List</a></li>
                         <li className="nav-item"><a className="nav-link" href="#about">About Us</a></li>
                         <LogoutButton/>
                     </ul>
@@ -37,4 +33,4 @@ const Navigation = () => {
     );
 };
 
-export default Navigation;
+export default TutorNavigation;
