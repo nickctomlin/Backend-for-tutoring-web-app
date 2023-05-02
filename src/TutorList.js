@@ -77,7 +77,6 @@ const  subjSubmitButton= async ()=>{
         <Masonry>
         {
   <div style={{color: "white"}}>
-    <center>
     <div className='box'>
     <h2>{nT.tutorId}</h2>
     <a>
@@ -92,7 +91,6 @@ const  subjSubmitButton= async ()=>{
       </div>
       </a>
       </div>
-      </center>
   </div> 
   }
       </Masonry>
