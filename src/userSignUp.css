@@ -2,15 +2,23 @@
   display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
-	height: 100px;
-  padding: 8rem;
+  padding: 20rem;
+  margin-top: auto;
+  margin-bottom: auto;
   }
   
 .loginbox input{
   justify-content: center;
 }
+.addMajor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.addMajor button {
+  margin-top: 10px; 
+}
 .addMajor {
   display: flex;
   align-items: center;
@@ -29,14 +37,21 @@
 .available input[type="time"] {
   margin-right: 10px;
   padding: 5px;
-  width: 150px;
+  width: 90px;
 }
+
+.Date
+
+.day_title{
+  align-items: center;
+}
+
   .form-container input {
     padding: 10px;
     margin-bottom: 20px;
     border: 2px solid #ccc;
     border-radius: 5px;
-    width: 400px;
+    width: 300px;
     }
 
   
