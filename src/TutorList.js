@@ -188,16 +188,16 @@ const  resetButton= ()=>{
         <label for="tutorId">Tutor Name</label>
         <input type="text" onChange={UTDIDHandler} placeholder="Tutor Name" value={tutorSearch} required/>
         <button className="submit-button" onClick={submitButton}>Search</button>
-        <button onClick={resetButton}>Reset Button</button>
+        <button onClick={resetButton} style={{ marginLeft: "10px" }}>Reset Button</button>
         </div>
       </div>
       <div className="form-container">
         <div className="searchBox">
         <legend className="title">Search for Subject</legend>
-        <label for="subject">what Subject</label>
+        <label for="subject">Subject Name</label>
         <input type="text" onChange={subjHandler} placeholder="Tutor Name" value={subject} required/>
         <button className="submit-button" onClick={subjSubmitButton}>Search</button>
-        <button onClick={resetButton}>Reset Button</button>
+        <button onClick={resetButton} style={{ marginLeft: "10px" }}>Reset Button</button>
         </div>
       </div>
   <ResponsiveMasonry
