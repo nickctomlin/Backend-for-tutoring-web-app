@@ -88,13 +88,17 @@
 .box {
   width: 300px;
   height: 250px;
-  background-color: darkorange;
+  background-color: #e87500;
   border: 2px solid #154734;
   padding: 10px;
   margin: 10px;
   float: left;
   border-radius: 5px;
   display: block;
+}
+
+.footer{
+  background-color: #212529;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -138,8 +142,8 @@ color: white;
 }
 
 .appointment {
-  background-color: black ;
-  border: 2px solid rgb(232, 117, 0);
+  background-color: #212529 ;
+  border: 2px solid #e87500;
   border-radius: 5px;
   padding: 20px;
   margin-bottom: 20px;
@@ -375,7 +379,7 @@ figure {
 
 img,
 svg {
-  vertical-align: middle;
+  vertical-align: center;
 }
 
 table {
@@ -3035,7 +3039,7 @@ textarea.form-control-lg {
 .btn-dark {
   --bs-btn-color: #fff;
   --bs-btn-bg: #212529;
-  --bs-btn-border-color: #212529;
+  --bs-btn-border-color: #fff;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #424649;
   --bs-btn-hover-border-color: #373b3e;
@@ -6814,7 +6818,7 @@ textarea.form-control-lg {
 }
 
 .link-dark {
-  color: #212529 !important;
+  color: white !important;
 }
 .link-dark:hover, .link-dark:focus {
   color: #1a1e21 !important;
@@ -8160,7 +8164,7 @@ textarea.form-control-lg {
 
 .text-muted {
   --bs-text-opacity: 1;
-  color: #6c757d !important;
+  color: white !important;
 }
 
 .text-black-50 {
@@ -10924,7 +10928,7 @@ p {
 
 @media (min-width: 768px) {
   section {
-    padding: 9rem 0;
+    padding: 1rem 0;
   }
 }
 .btn-xl {

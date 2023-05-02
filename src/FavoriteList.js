@@ -5,7 +5,9 @@ const FavoriteList = () => {
           <div>
            <section id="favorites">
     <div className="container">
-      <h1>Favorites List</h1>
+        <h1>
+            <center>Favorites List</center>
+        </h1>
       <br></br>
       <div className="appointment" data-id="1">
         <h2>Math Tutoring</h2>
@@ -13,7 +15,6 @@ const FavoriteList = () => {
         <p><strong>Time:</strong> Feb 16th, 2023 @ 2:00 PM - 3:00 PM</p>
         <p><strong>Location:</strong> Room 101</p>
       </div>
-      <br></br>
       <div className="appointment" data-id="2">
         <h2>English Tutoring</h2>
         <p><strong>Tutor:</strong> Jane Smith</p>
