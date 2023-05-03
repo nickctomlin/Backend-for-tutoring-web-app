@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
-const Appointments = () => {
+const TutorAppointments = () => {
   const { logout,isAuthenticated,getAccessTokenSilently  } = useAuth0();
   var a;
   const [appointments, setAppointments] = useState(<div></div>);
@@ -100,6 +100,7 @@ a = response.data;
 }
         return (
           <div>
+        <h1><center>Upcoming Appointments List</center></h1>
         {appointments}
         <div className="form-container">
         <div className="searchBox">
@@ -113,4 +114,4 @@ a = response.data;
         );
     };
     
-    export default Appointments;
+    export default TutorAppointments;
