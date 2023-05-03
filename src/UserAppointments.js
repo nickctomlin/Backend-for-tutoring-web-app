@@ -31,8 +31,7 @@ const   submitButton= async ()=>{
             console.log("Here At Appointments")
             console.log(a);
           setAppointments(
-           <section className="page-section bg-dark" id="appointments">
-     <h1><center>Tutoring Appointments</center></h1>
+           <div>
            {a.map(app => (
              <div className="appointment" data-id="1">
                <h2>Appointment ID </h2>{app.AppointmentID}
@@ -41,7 +40,7 @@ const   submitButton= async ()=>{
        <p><strong>Student:</strong> {app.StudentuserName}</p>
      </div>
            ))}
-             </section>
+             </div>
          );
         } else
         {
@@ -59,9 +58,7 @@ const   submitButton= async ()=>{
              console.log("Here At Appointments")
              console.log(a);
            setAppointments(
-            <section className="page-section bg-dark" id="appointments">
-      <h1><center>Tutoring Appointments</center></h1>
-      <br></br>
+            <div>
             {a.map(app => (
               <div className="appointment" data-id="1">
                 <h2>Appointment ID </h2>{app.AppointmentID}
@@ -70,7 +67,7 @@ const   submitButton= async ()=>{
         <p><strong>Student:</strong> {app.StudentuserName}</p>
       </div>
             ))}
-              </section>
+            </div>
           );
          } else
          {
@@ -100,7 +97,9 @@ a = response.data;
 }
         return (
           <div>
-        <h1><center>Upcoming Appointments List</center></h1>
+        <section id="userappointments">
+        <h1><center>Tutoring Appointments</center></h1>
+        <br></br>
         {appointments}
         <div className="form-container">
         <div className="searchBox">
@@ -110,6 +109,7 @@ a = response.data;
         <button className="submit-button" onClick={submitButton}>Search</button>
         </div>
       </div>
+      </section>
   </div>
         );
     };

@@ -19,7 +19,7 @@ const TutorNavigation = () => {
                 
                 <div className="collapse navbar-collapse" id="navbarResponsive">
                     <ul className="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li className="nav-item"><a className="nav-link" href="#appointments">Tutoring Appointments</a></li>
+                        <li className="nav-item"><a className="nav-link" href="#tutorappointments">Tutoring Appointments</a></li>
                         <li className="nav-item"><a className="nav-link" href="#about">About Us</a></li>
                         <LogoutButton/>
                     </ul>
