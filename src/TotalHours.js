@@ -6,7 +6,7 @@ const TotalHours  = () => {
         <div>
        <section className="page-section" id="about">
         <center>
-        <div className='box'>
+        <div className='boxTotal'>
       <div className="container">
           <div className="text-center">
               <h3 className="section-heading text-uppercase">Total Tutoring Hours Completed</h3>

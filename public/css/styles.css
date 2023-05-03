@@ -96,6 +96,17 @@
   display: block;
 }
 
+.boxTotal {
+  width: 800px;
+  height: 100px;
+  background-color: #e87500;
+  border: 2px solid #154734;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  display: block;
+}
+
 .footer{
   background-color: #212529;
 }
