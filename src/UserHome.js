@@ -4,6 +4,7 @@ import TutorList from './TutorList';
 import UserAppointments from './UserAppointments';
 import FavoriteList from './FavoriteList';
 import TotalHours from './TotalHours';
+import BookAppointments from './BookAppointments';
 
 const UserHome = () => {
 
@@ -12,6 +13,7 @@ const UserHome = () => {
  
 
   <TutorList/>
+  <BookAppointments/>
   <UserAppointments/>
   <FavoriteList/>
   <TotalHours/>

@@ -75,27 +75,10 @@ const BookAppointments = () => {
       });
     //navigate("/");
   }
-  const [image,setImage] = useState();
-  function handleImage(e) {
-    console.log(e.target.files)
-    setImage(e.target.files[0])
-  }
-  function handleApi()
-  {
-    const formData = new FormData()
-    formData.append('image', image)
-    axios.post('url', formData).then((res) => {
-      console.log(res)
-    })
-  }
-
-  function clickHandler () {
-    handleApi();
-    submitButton();
-  }
 
   return (
     <div>
+    <section id="bookappointments">
     {isAuthenticated && 
       <div className="form-container">
         <div className="loginbox">
@@ -120,11 +103,11 @@ const BookAppointments = () => {
           <input type="time" style={{margin: '5px', padding: '5px'}}/>
           <button className='addTime' onClick={addButton}>Add Time</button>
         </form>
-        <input type="file" name="file" onChange={handleImage}/>
-        <button className="submit-button" onClick={clickHandler}>Submit</button>
+        <button className="submit-button" onClick={submitButton}>Submit</button>
         </div>
       </div>
     }
+    </section>
   </div>
   );
 };

@@ -20,7 +20,7 @@ const UserNavigation = () => {
                 <div className="collapse navbar-collapse" id="navbarResponsive">
                     <ul className="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li className="nav-item"><a className="nav-link" href="#findtutors">Find Tutors</a></li>
-                        <li className="nav-item"><a className="nav-link" href="#portfolio">Book Appointments</a></li>
+                        <li className="nav-item"><a className="nav-link" href="#bookappointments">Book Appointments</a></li>
                         <li className="nav-item"><a className="nav-link" href="#userappointments">Tutoring Appointments</a></li>
                         <li className="nav-item"><a className="nav-link" href="#tutorlist">Tutor List</a></li>
                         <li className="nav-item"><a className="nav-link" href="#favorites">Favorites List</a></li>
