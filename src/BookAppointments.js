@@ -104,23 +104,14 @@ const BookAppointments = () => {
         <input type="text" name="UTD ID" onChange={TutorIDHandler} placeholder="Tutor ID" value={TutorID} required/>
         <form className='available' style={{margin: '10px', padding: '10px'}}>
           <label for="Date Available">Days and Times Available</label>
-          <label>Choose Day: </label>
-          <select name="Day" id="Day" style={{margin: '5px', padding: '5px'}}>
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Tuesday">Friday</option>
-            <option value="Wednesday">Saturday</option>
-            <option value="Thursday">Sunday</option>
-          </select>
+          <label>Choose Date: </label>
+          <input type="date" value="2023-05-03" />
           <label>From: </label>
           <input type="time" style={{margin: '5px', padding: '5px'}}/>
           <label>To: </label>
           <input type="time" style={{margin: '5px', padding: '5px'}}/>
           <button className='addTime' onClick={addButton}>Add Time</button>
         </form>
-        <input type="file" name="file" onChange={handleImage}/>
         <button className="submit-button" onClick={clickHandler}>Submit</button>
         </div>
       </div>
