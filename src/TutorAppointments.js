@@ -97,7 +97,7 @@ a = response.data;
 }
         return (
           <div>
-        <section id="tutorappointments">
+        <section id="userappointments">
         <h1><center>Tutoring Appointments</center></h1>
         <br></br>
         {appointments}
