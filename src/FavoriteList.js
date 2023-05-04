@@ -1,6 +1,41 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
 
 const FavoriteList = () => {
+  const { isAuthenticated  } = useAuth0();
+  //const [tutors, setTutor] = useState(<div></div>);
+
+  var t
+  var hold = "http://localhost:4000/tutors";
+  const response =  axios.get(hold);
+  var fL = response.data;
+
+  
+
+  useEffect(() => {
+    callApi().then(()=>{
+
+      console.log(fL)
+
+  });
+
+  }, [isAuthenticated]);
+
+
+  async function callApi(){
+  try {const response =  await axios.get("http://localhost:4000/returnFavorites");
+  //console.log(response.data);
+  t = response.data;
+  //console.log(checker);
+      }catch (error) {
+          console.log(error.message);
+      }
+  
+  }
+
+
+
         return (
           <div>
            <section id="favorites">
