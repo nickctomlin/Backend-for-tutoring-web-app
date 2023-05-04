@@ -29,6 +29,8 @@ const majorHandler = (e) =>{
 const  submitButton= ()=>{
     //console.log("Here in Try for User")
     //console.log(user1);
+    if(UTDID!= null && ExpectedGradDate!= null && major!=null)
+    {
     axios.post('http://localhost:4000/user', {
         userName: user.nickname,
         password: "Test",
@@ -47,6 +49,12 @@ const  submitButton= ()=>{
         console.log(error);
       });
     //navigate("/");
+}
+
+else
+{
+  alert("You have not Completed Some of the Forms");
+}
 }
 return (
   <div>

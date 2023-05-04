@@ -86,7 +86,8 @@ const TutorSignUp = () => {
   
 
   const  submitButton= ()=>{
-
+    if(ExpectedGradDate!= null && subjectList!= [] && major!= null && daysAvaliable!=[])
+    {
    var tutor = {
     tutorId:user.nickname,
       password:"Test123",
@@ -108,6 +109,11 @@ const TutorSignUp = () => {
         console.log(error);
       });
    console.log(tutor);
+    }
+    else
+    {
+      alert("You have not Completed Some of the Forms");
+    }
   }
   const [image,setImage] = useState();
   function handleImage(e) {
