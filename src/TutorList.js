@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 import axios from "axios";
 const TutorList= () => {
-  const { logout,isAuthenticated  } = useAuth0();
+  const { logout,isAuthenticated,getAccessTokenSilently,user  } = useAuth0();
     var t
     const [tutors, setTutors] = useState(<div></div>);
     const [tutorSearch, setTutorSearch] = useState();
@@ -13,6 +13,38 @@ const TutorList= () => {
        
       setTutorSearch( e.target.value )
   }
+  async function callProtectedApi(i, tId,d,st,en,op){
+    try {
+        
+ // console.log("Is Authooo")
+const token = await getAccessTokenSilently();
+//console.log(token);
+console.log("date is " + d);
+console.log("start is " + st);
+console.log("end is " + en);
+console.log("op is " + op);
+const response = await axios.post('http://localhost:4000/addReservation',{index: i,tutor:tId,
+obj:{
+  AppointmentID:tId+user.nickname,
+    StudentuserName:user.nickname,
+    TeacherID: tId,
+    date: d,
+    start: st,
+    end:en,
+    opId:op
+}
+}, {
+  headers: {
+    authorization: `Bearer ${token}`,
+  }
+});
+console.log('Response:')
+console.log(response.data);
+    }catch (error) {
+        console.log(error.message);
+    }
+
+}
   const subjHandler = (e) =>{
     // console.log(e.target.value);
      
@@ -49,6 +81,16 @@ const  subjSubmitButton= async ()=>{
        <ul>
    {tutor.SubjectList.map(element => <li >{element}</li>)}
    </ul>
+   <div>
+          {tutor.avaliableTime.map((element,i) => 
+            <div onClick={()=>bookAppointment(i,tutor.tutorId,element.date,element.openingHours.start,element.openingHours.end,element.opId )}>
+             Date: {element.date}
+              Start Time: {element.openingHours.start}
+              End Time: {element.openingHours.end}
+              Number Of People: {element.openingHours.count}
+            </div>
+            )}
+        </div>
     </div>
     </a>
     </div>
@@ -88,6 +130,16 @@ const  subjSubmitButton= async ()=>{
          <ul>
      {nT.SubjectList.map(element => <li >{element}</li>)}
      </ul>
+     <div>
+          {nT.avaliableTime.map((element,i)=> 
+            <div onClick={()=>bookAppointment(i,nT.tutorId,element.date,element.openingHours.start,element.openingHours.end,element.opId )}>
+              Date: {element.date}
+              Start Time: {element.openingHours.start}
+              End Time: {element.openingHours.end}
+              Number Of People: {element.openingHours.count}
+            </div>
+            )}
+        </div>
       </div>
       </a>
       </div>
@@ -105,9 +157,10 @@ const  resetButton= ()=>{
   setSubject("");
   callApi().then(()=>{
     //console.log(checker);
+    //console.log("T is + " + t);
   if (t != null) {
             console.log("Here At Not Tutor List")
-            console.log(t);
+            console.log(t[0].avaliableTime[0]);
           setTutors(
            <Masonry>
            {t.map(tutor => (
@@ -123,6 +176,16 @@ const  resetButton= ()=>{
             <ul>
         {tutor.SubjectList.map(element => <li >{element}</li>)}
         </ul>
+        <div>
+          {tutor.avaliableTime.map((element,i)=> 
+            <div onClick={()=>bookAppointment(i,tutor.tutorId,element.date,element.openingHours.start,element.openingHours.end,element.opId )}>
+              Date: {element.date}
+              Start Time: {element.openingHours.start}
+              End Time: {element.openingHours.end}
+              Number Of People: {element.openingHours.count}
+            </div>
+            )}
+        </div>
          </div>
          </a>
          </div>
@@ -138,12 +201,19 @@ const  resetButton= ()=>{
 });
   //navigate("/");
 }
+const bookAppointment = async (i,tutorName,date,start,end,opId)=>{
+console.log("i is + " +i);
+console.log("tutorName is + " + tutorName);
+callProtectedApi(i,tutorName,date,start,end,opId).then(()=>{
+  resetButton();
+});
+}
     useEffect(() => {
       callApi().then(()=>{
        //console.log(checker);
      if (t != null) {
                console.log("Here At Not Tutor List")
-               console.log(t);
+               console.log(t[0].avaliableTime[0]);
              setTutors(
               <Masonry>
               {t.map(tutor => (
@@ -159,6 +229,17 @@ const  resetButton= ()=>{
                <ul>
            {tutor.SubjectList.map(element => <li >{element}</li>)}
            </ul>
+           <div>
+          {tutor.avaliableTime.map((element,i )=> 
+            <div onClick={()=>bookAppointment(i,tutor.tutorId,element.date,element.openingHours.start,element.openingHours.end,element.opId )}>
+              Date: {element.date}<br/>
+              Start Time: {element.openingHours.start}<br/>
+              End Time: {element.openingHours.end}<br/>
+              Number Of People: {element.openingHours.count}
+              <br/>
+            </div>
+            )}
+            </div>
             </div>
             </a>
             </div>

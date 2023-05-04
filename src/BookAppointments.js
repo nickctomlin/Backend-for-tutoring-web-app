@@ -81,7 +81,7 @@ const BookAppointments = () => {
     <section id="bookappointments">
     {isAuthenticated && 
       <div className="form-container">
-        <div className="loginbox">
+        <div className>
         <legend className="title">Book an Appointment</legend>
         <label for="username">Tutor ID</label>
         <input type="text" name="UTD ID" onChange={TutorIDHandler} placeholder="Tutor ID" value={TutorID} required/>

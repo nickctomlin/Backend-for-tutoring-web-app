@@ -13,7 +13,6 @@ const UserHome = () => {
  
 
   <TutorList/>
-  <BookAppointments/>
   <UserAppointments/>
   <FavoriteList/>
   <TotalHours/>

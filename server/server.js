@@ -383,17 +383,22 @@ app.post('/tutors',urlencodedParser,express.json(), (req, res) => {
    try{
     console.log("In Add Reservation");
     var tutorDocs
+    console.log("obj is")
+    console.log(req.body.obj);
     const i = req.body.index
 const tutor = req.body.tutor
 console.log("i is " + i);
+console.log("Tutor is " + tutor);
 await tutorModel.findOne({tutorId: tutor}).catch((err)=>{
     //console.log(docs);
-    res.send(err);
+    //res.send(err);
 })
 .then((docs)=>{
 tutorDocs = docs
 });
 var check = tutorDocs.avaliableTime[i].openingHours.isFilled;
+console.log("i is");
+console.log("Check is");
 var count =  tutorDocs.avaliableTime[i].openingHours.count+ 1;
 if(check != true)
 {
@@ -411,7 +416,7 @@ await tutorModel.findOneAndUpdate({tutorId: tutor},   {
       } 
 }).catch((err)=>{
     //console.log(docs);
-    res.send(err);
+    //res.send(err);
 })
 .then((docs)=>{
    // console.log(docs)
@@ -423,7 +428,7 @@ await tutorModel.findOneAndUpdate({tutorId: tutor},   {
 [placeHolder]:  newIsFilled
 }).catch((err)=>{
     console.log(err);
-    res.send(err);
+    //res.send(err);
 })
 .then((docs)=>{
    // console.log(docs)
@@ -431,7 +436,7 @@ await tutorModel.findOneAndUpdate({tutorId: tutor},   {
     console.log("Finished Updating Place Holder ")
 });
 const doc = new appointmentModel(req.body.obj);
-doc.save().then(()=>{
+ await doc.save().then(()=>{
     console.log("Done");
    })
    .catch((error)=>res.send(error));
@@ -441,32 +446,34 @@ const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/use
      }});
 const userInfo = response.data
 const name = userInfo.nickname;
-//console.log("Name is " + name)
+console.log("Name is " + name)
 //console.log(req.body)
 var Nname = tutor+name;
-userModel.findOneAndUpdate({userName: name},   { $push: { 
+await userModel.findOneAndUpdate({userName: name},   { $push: { 
    upcomingAppointments: Nname
  } 
 }).catch((err)=>{
-   //console.log(docs);
-   res.send(err);
+   console.log("Done with user model.update");
+   //res.send(err);
 })
 .then((docs)=>{
    console.log(docs)
    //res.send(docs);
 });
-tutorModel.findOneAndUpdate({tutorId: tutor},   { $push: { 
+await tutorModel.findOneAndUpdate({tutorId: tutor},   { $push: { 
     upcomingAppointments: Nname
   } 
 }).catch((err)=>{
-    //console.log(docs);
-    res.send(err);
+    console.log("Done with tutor model.update");
+    //res.send(err);
 })
 .then((docs)=>{
+    console.log("In tutor Model")
     console.log(docs)
     //res.send(docs);
 });
 res.send("Done");
+return
 }
 else
 {
