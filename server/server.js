@@ -117,6 +117,48 @@ catch{
    res.send("Ths is wrong") 
 }
 });
+
+app.get('/returnReservationsTutors',jwtCheck, async function (req, res) {
+    try{
+        const token = req.headers.authorization.split(' ')[1];
+        const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/userinfo',{headers: {
+            Authorization: `Bearer ${token}`,
+          }});
+    const userInfo = response.data
+    const name = userInfo.nickname;
+    var ret = [];
+    tutorModel.findOne({tutorId: name}).catch((err)=>{
+        //console.log(docs);
+        res.send(err);
+    })
+    .then((docs)=>{
+        var upComing = docs.upcomingAppointments;
+        console.log(upComing);
+        var bar = new Promise((resolve, reject) => {
+            upComing.forEach((value, index, array) => {
+                appointmentModel.findOne({AppointmentID: value}).then((docs)=>{
+                    ret.push(docs);
+                    if (index === array.length -1) resolve();
+                })
+            });
+        });
+        
+        bar.then(() => {
+            console.log("Done");
+            res.send(ret);
+        });
+        //while(t == 0)
+      // 
+        //console.log("t is "+t);
+       //res.send(ret);
+    });
+}
+catch{
+   console.log("error")
+   res.send("Ths is wrong") 
+}
+});
+
 app.get('/returnFavorites',jwtCheck, async function (req, res) {
     try{
         const token = req.headers.authorization.split(' ')[1];
@@ -277,13 +319,18 @@ app.get('/user/:Id', function (req, res){
     });
 });
 
-app.post('/tutors',urlencodedParser, (req, res) => {
+app.post('/tutors',urlencodedParser,express.json(), (req, res) => {
     req.body; // JavaScript object containing the parse JSON
+    console.log(req.body.avaliableTime);
     const doc = new tutorModel(req.body);
     doc.save().then(()=>{
+        console.log("Done");
         res.send("Done");
        })
-       .catch((error)=>res.send(error));
+       .catch((error)=>{
+        console.log(error);
+        res.send(error)
+    });
    // res.send("Here");
     //res.json(req.body.Sri);
   });

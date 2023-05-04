@@ -33,9 +33,9 @@ avaliableTime: [{
     opId:{type:String,
         required:true},
     openingHours: {
-      start:{type: Number,
+      start:{type: String,
       default:null},
-      end:{type: Number,
+      end:{type: String,
         default:null},
         count:{
             type: Number,

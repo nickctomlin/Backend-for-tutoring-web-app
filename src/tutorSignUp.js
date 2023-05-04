@@ -9,10 +9,13 @@ const TutorSignUp = () => {
   const [TutorID , setTutorID] = useState();
   const [ExpectedGradDate , setExpectedGradDate] = useState();
   const [major , setMajor] = useState();
-  const [daysAvailable, setdaysAvailable] = useState();
   const [hoursAvailable, setHours] = useState();
   const [majorsTaught, setTaught] = useState();
-
+  const [subjectList, setSubjectList] = useState([]);
+  const [day, setDay] = useState();
+  const [fromTime, setFromTime] = useState();
+  const [toTime, setToTime] = useState();
+  const [daysAvaliable, setDays] = useState([]);
   const TutorIDHandler = (e) =>{
     // console.log(e.target.value);
      
@@ -31,15 +34,29 @@ const TutorSignUp = () => {
   const daysAvailableHandler = (e) =>{
     //console.log(e.target.value);
     
-  setdaysAvailable( e.target.value )
+  setDay( e.target.value )
   }
   const sethoursHandler = (e) =>{
     //console.log(e.target.value);
     
   setHours( e.target.value )
   } 
+  
+  const setToTimeHandeler = (e) =>{
+    //console.log(e.target.value);
+    
+  setToTime( e.target.value )
+  } 
+  const setFromTimeHandeler = (e) =>{
+    //console.log(e.target.value);
+    
+  setFromTime( e.target.value )
+  } 
 
   const addButton = () =>{
+    console.log("majors taught in add button" + majorsTaught);
+    setSubjectList([...subjectList, majorsTaught]);
+    setTaught("");
     
   }
   const majorstaughtHandler = (e) =>{
@@ -48,23 +65,40 @@ const TutorSignUp = () => {
   setTaught( e.target.value )
   }
 
-  const addDate = (e) =>{
-
-  }
+  const addDate = () =>{
+    //e.preventDefault();
+    var dayToAdd = {
+      date: day,
+      opId: "O"+daysAvaliable.length,
+      openingHours: {
+        start:fromTime,
+        end:toTime,
+        isFilled:false,
+        count:0
+        },
+      }
+      console.log(dayToAdd);
+      setDays([...daysAvaliable, dayToAdd]);
+      setDay("");
+      setToTime("");
+      setFromTime("")
+    }
+  
 
   const  submitButton= ()=>{
-    //console.log("Here in Try for User")
-    //console.log(user1);
-    axios.post('http://localhost:4000/user', {
-        userName: user.nickname,
-        password: "Test",
-        tutorID: TutorID,
-        ExpectedGradDate: ExpectedGradDate,
-        major: major,
-        daysAvailable: daysAvailable
-      }, {
+
+   var tutor = {
+    tutorId:user.nickname,
+      password:"Test123",
+      UTDID:TutorID,
+      ExpectedGradDate: ExpectedGradDate,
+      SubjectList: subjectList,
+      aboutMe: major,
+      avaliableTime: daysAvaliable,
+   }
+   axios.post('http://localhost:4000/tutors', tutor, {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/json',
         }
       })
         .then(response => {
@@ -73,7 +107,7 @@ const TutorSignUp = () => {
       .catch(function (error) {
         console.log(error);
       });
-    //navigate("/");
+   console.log(tutor);
   }
   const [image,setImage] = useState();
   function handleImage(e) {
@@ -88,19 +122,13 @@ const TutorSignUp = () => {
       console.log(res)
     })
   }
-
-  function clickHandler () {
-    handleApi();
-    submitButton();
-  }
-
   return (
     <div>
     {isAuthenticated && 
       <div className="form-container">
         <div className="loginbox">
         <legend className="title">Tutor Sign-Up</legend>
-        <label for="username">Tutor ID</label>
+        <label for="username">UTD ID</label>
         <input type="text" name="UTD ID" onChange={TutorIDHandler} placeholder="Tutor ID" value={TutorID} required/>
         <label for="password">Expected Graduation Date</label>
         <input type="text" name="ExpectedGradDate" onChange={expecHandler} placeholder="Expected Grad Date" value={ExpectedGradDate} required/>
@@ -111,10 +139,10 @@ const TutorSignUp = () => {
           <input type="text" name="majorsTaught" onChange={majorstaughtHandler} placeHolder="Ex. Computer Science" value={majorsTaught} required />
           <button className="AddMajor" onClick={addButton}>Add Major</button>
         </div>
-        <form className='available' style={{margin: '10px', padding: '10px'}}>
           <label for="Date Available">Days and Times Available</label>
           <label>Choose Day: </label>
-          <select name="Day" id="Day" style={{margin: '5px', padding: '5px'}}>
+          <select name="Day" value = {day} onChange = {daysAvailableHandler} id="Day" style={{margin: '5px', padding: '5px'}}>
+            <option value ="Select">Select</option>
             <option value="Monday">Monday</option>
             <option value="Tuesday">Tuesday</option>
             <option value="Wednesday">Wednesday</option>
@@ -124,13 +152,12 @@ const TutorSignUp = () => {
             <option value="Thursday">Sunday</option>
           </select>
           <label>From: </label>
-          <input type="time" style={{margin: '5px', padding: '5px'}}/>
+          <input value={fromTime} onChange= {setFromTimeHandeler} type="time" style={{margin: '5px', padding: '5px'}}/>
           <label>To: </label>
-          <input type="time" style={{margin: '5px', padding: '5px'}}/>
-          <button className='addTime' onClick={addButton}>Add Time</button>
-        </form>
+          <input value = {toTime} onChange={setToTimeHandeler}  type="time" style={{margin: '5px', padding: '5px'}}/>
+          <button className='addTime' onClick={addDate}>Add Time</button>
         <input type="file" name="file" onChange={handleImage}/>
-        <button className="submit-button" onClick={clickHandler}>Submit</button>
+        <button className="submit-button" onClick={submitButton}>Submit</button>
         <div class="signup-links">
 				<a href="TutorSU.html">Sign Up as Student</a>
 				<a href="login.html">Back to Login</a>
