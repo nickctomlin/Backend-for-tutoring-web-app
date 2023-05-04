@@ -33,7 +33,7 @@ console.log(response.data);
   return (
     <div>
     {isAuthenticated && (
-      <div class="profile"><img src={user.picture} width="40" height="40" class="rounded-circle"></img> Logged in as {user.name}</div>
+      <div className="profile"><img src={user.picture} width="40" height="40" class="rounded-circle"></img> Logged in as {user.name}</div>
       
 
       /* <div>

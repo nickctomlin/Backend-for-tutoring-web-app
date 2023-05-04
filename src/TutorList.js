@@ -50,6 +50,27 @@ console.log(response.data);
      
     setSubject( e.target.value )
 }
+const addToFavorite = async(tutorID) =>
+{
+  console.log("Tutor ID  is " + tutorID);
+  try {
+        
+    // console.log("Is Authooo")
+   const token = await getAccessTokenSilently();
+   //console.log(token);
+   const response = await axios.post('http://localhost:4000/userFavorite',{favorite: tutorID
+   }, {
+     headers: {
+       authorization: `Bearer ${token}`,
+     }
+   });
+   console.log('Response:')
+   console.log(response.data);
+   resetButton();     
+  }catch (error) {
+           console.log(error.message);
+       }
+}
 const  subjSubmitButton= async ()=>{
   //console.log("Here in Try for User")
   //console.log(user1);
@@ -69,7 +90,7 @@ const  subjSubmitButton= async ()=>{
     setTutors(
       <Masonry>
       {nT.map(tutor => (
-<div style={{color: "white"}}>
+<div style={{color: "white"}} onClick={()=>addToFavorite(tutor.tutorId)}>
   <div className='box'>
   <h2>{tutor.tutorId}</h2>
   <a>
@@ -118,7 +139,7 @@ const  subjSubmitButton= async ()=>{
       setTutors(
         <Masonry>
         {
-  <div style={{color: "white"}}>
+  <div style={{color: "white"}} onClick={()=>addToFavorite(nT.tutorId)}>
     <div className='box'>
     <h2>{nT.tutorId}</h2>
     <a>
@@ -164,7 +185,7 @@ const  resetButton= ()=>{
           setTutors(
            <Masonry>
            {t.map(tutor => (
-     <div style={{color: "white"}}>
+     <div style={{color: "white"}} onClick={()=>addToFavorite(tutor.tutorId)}>
       <div className='box'>
        <h2>{tutor.tutorId}</h2>
        <a>
@@ -217,7 +238,7 @@ callProtectedApi(i,tutorName,date,start,end,opId).then(()=>{
              setTutors(
               <Masonry>
               {t.map(tutor => (
-        <div style={{color: "white"}}>
+        <div style={{color: "white"}} onClick={()=>addToFavorite(tutor.tutorId)}>
           <div className='box'>
           <h2>{tutor.tutorId}</h2>
           <a>

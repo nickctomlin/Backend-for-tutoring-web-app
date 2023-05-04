@@ -158,7 +158,7 @@ const TutorSignUp = () => {
           <button className='addTime' onClick={addDate}>Add Time</button>
         <input type="file" name="file" onChange={handleImage}/>
         <button className="submit-button" onClick={submitButton}>Submit</button>
-        <div class="signup-links">
+        <div className="signup-links">
 				<a href="TutorSU.html">Sign Up as Student</a>
 				<a href="login.html">Back to Login</a>
             </div>

@@ -173,10 +173,10 @@ app.get('/returnFavorites',jwtCheck, async function (req, res) {
         res.send(err);
     })
     .then((docs)=>{
-        var favList = docs.favoriteList;
-        console.log(favList);
+        var upComing = docs.favoriteList;
+        console.log(upComing);
         var bar = new Promise((resolve, reject) => {
-            favList.forEach((value, index, array) => {
+            upComing.forEach((value, index, array) => {
                 tutorModel.findOne({tutorId: value}).then((docs)=>{
                     ret.push(docs);
                     if (index === array.length -1) resolve();
