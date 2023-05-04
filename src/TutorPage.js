@@ -4,7 +4,6 @@ import TutorNavigation from "./TutorNavigation";
 import TutorHome from "./TutorHome";
 import AboutUs from './AboutUs';
 import Header from "./Header";
-import Footer from "./Footer";
 import { useAuth0, isAuthenticated} from "@auth0/auth0-react";
 
 function TutorPage()  {
@@ -22,7 +21,6 @@ function TutorPage()  {
     <Header/>
     <TutorHome/>
     <AboutUs/>
-    <Footer/>
   </div>
   //return <button onClick={() => loginWithPopup()}>Log In With loginWithPopup</button>
   );
