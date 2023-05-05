@@ -4,11 +4,14 @@ import TutorList from './TutorList';
 import TutorAppointments from './TutorAppointments';
 import FavoriteList from './FavoriteList';
 import TotalHours from './TotalHours';
-
+import { useAuth0 } from "@auth0/auth0-react";
+import TutorImage from './TutorImage';
 const TutorHome = () => {
-
+    const { logout,isAuthenticated,getAccessTokenSilently,user  } = useAuth0();
+    const [image, setImage] = useState();
     return (
       <div>
+    <TutorImage/>
   <TutorAppointments/>
   <TotalHours/>
   {/* <div className="py-5">
