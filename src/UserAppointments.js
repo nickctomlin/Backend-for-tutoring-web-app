@@ -65,6 +65,9 @@ const   submitButton= async ()=>{
         <p>Appointment at </p>{app.date}
         <p><strong>Tutor:</strong> {app.TeacherID}</p>
         <p><strong>Student:</strong> {app.StudentuserName}</p>
+        <p><strong>Date:</strong> {app.date}</p>
+        <p><strong>Start:</strong> {app.start}</p>
+        <p><strong>End:</strong> {app.end}</p>
       </div>
             ))}
             </div>
