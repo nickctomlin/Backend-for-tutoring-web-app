@@ -1,7 +1,7 @@
 import React from 'react'
 
 const TotalHours  = () => {
-    const hours = 15;
+    const hours = 0;
     return (
         <div>
        <section className="page-section" id="about">
