@@ -96,6 +96,12 @@
   display: block;
 }
 
+.profilePic {
+  height: 200px;
+  margin-left: 600px;
+  margin-right: 600px;
+}
+
 .boxTotal {
   width: 800px;
   height: 100px;

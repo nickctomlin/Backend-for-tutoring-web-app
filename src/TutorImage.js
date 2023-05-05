@@ -13,7 +13,7 @@ const TutorImage = () => {
     return (
       <div>
         <div>
-    <img id="preview" src={image} alt="userpicture"/>
+    <img id="preview" className="profilePic" src={image} alt="userpicture"/>
 </div>
       </div>
     );
