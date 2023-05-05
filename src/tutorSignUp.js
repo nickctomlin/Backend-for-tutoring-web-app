@@ -16,6 +16,7 @@ const TutorSignUp = () => {
   const [fromTime, setFromTime] = useState();
   const [toTime, setToTime] = useState();
   const [daysAvaliable, setDays] = useState([]);
+  const [image,setImage] = useState();
   const TutorIDHandler = (e) =>{
     // console.log(e.target.value);
      
@@ -86,6 +87,8 @@ const TutorSignUp = () => {
   
 
   const  submitButton= ()=>{
+    console.log("Image is");
+    console.log(image);
     if(ExpectedGradDate!= null && subjectList!= [] && major!= null && daysAvaliable!=[])
     {
    var tutor = {
@@ -115,7 +118,6 @@ const TutorSignUp = () => {
       alert("You have not Completed Some of the Forms");
     }
   }
-  const [image,setImage] = useState();
   function handleImage(e) {
     console.log(e.target.files)
     setImage(e.target.files[0])
@@ -134,18 +136,18 @@ const TutorSignUp = () => {
       <div className="form-container">
         <div className="loginbox">
         <legend className="title">Tutor Sign-Up</legend>
-        <label for="username">UTD ID</label>
-        <input type="text" name="UTD ID" onChange={TutorIDHandler} placeholder="Tutor ID" value={TutorID} required/>
-        <label for="password">Expected Graduation Date</label>
-        <input type="text" name="ExpectedGradDate" onChange={expecHandler} placeholder="Expected Grad Date" value={ExpectedGradDate} required/>
-        <label for="Major">Write Your About Me</label>
-        <input type="text" name="major" onChange={majorHandler} placeholder="Major" value={major} required/>
+        <label htmlFor="username">UTD ID</label>
+        <input type="text" name="UTD ID" onChange={TutorIDHandler} placeHolder="Tutor ID" value={TutorID} required/>
+        <label htmlFor="password">Expected Graduation Date</label>
+        <input type="text" name="ExpectedGradDate" onChange={expecHandler} placeHolder="Expected Grad Date" value={ExpectedGradDate} required/>
+        <label htmlFor="Major">Write Your About Me</label>
+        <input type="text" name="major" onChange={majorHandler} placeHolder="Major" value={major} required/>
         <label type="What you Tutor?">What You Tutor?</label>
         <div className='addMajor'>
           <input type="text" name="majorsTaught" onChange={majorstaughtHandler} placeHolder="Ex. Computer Science" value={majorsTaught} required />
           <button className="AddMajor" onClick={addButton}>Add Major</button>
         </div>
-          <label for="Date Available">Days and Times Available</label>
+          <label htmlFor="Date Available">Days and Times Available</label>
           <label>Choose Day: </label>
           <select name="Day" value = {day} onChange = {daysAvailableHandler} id="Day" style={{margin: '5px', padding: '5px'}}>
             <option value ="Select">Select</option>

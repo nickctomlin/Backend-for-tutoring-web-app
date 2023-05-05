@@ -2,9 +2,13 @@ const axios = require('axios')
 const nodemailer = require("nodemailer");
 const express = require('express');
 const app = express();
+const Upload = require("./UploadSchema");
 const { auth } = require('express-oauth2-jwt-bearer');
 const cors = require('cors');
 app.use(cors());
+const multer  = require('multer')
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 var bodyParser = require('body-parser')
 const port = process.env.PORT || 4000;
 const mongoose = require("mongoose");
@@ -63,7 +67,33 @@ app.get('/sendEmailForAppointment/:userName/:DateEmail/:tutor', async function (
     });
 
 });
-
+app.post("/upload", upload.single("file"), async (req, res) => {
+    // req.file can be used to access all file properties
+    try {
+      //check if the request has an image or not
+      if (!req.file) {
+        res.json({
+          success: false,
+          message: "You must provide at least 1 file"
+        });
+      } else {
+        let imageUploadObject = {
+          file: {
+            data: req.file.buffer,
+            contentType: req.file.mimetype
+          },
+          fileName: req.body.fileName
+        };
+        const uploadObject = new Upload(imageUploadObject);
+        // saving the object into the database
+        const uploadProcess = await uploadObject.save();
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Server Error");
+    }
+  });
+  
 app.get('/protected',jwtCheck, async function (req, res) {
     try{
         const token = req.headers.authorization.split(' ')[1];
