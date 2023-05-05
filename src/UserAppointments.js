@@ -29,12 +29,12 @@ const   submitButton= async ()=>{
     //console.log(checker);
   if (a != null) {
             console.log("Here At Appointments")
-            console.log(a);
+            console.log("a is " + a);
           setAppointments(
            <div>
            {a.map(app => (
              <div className="appointment" data-id="1">
-               <h2>Appointment ID </h2>{app.AppointmentID}
+          <h2>Appointment ID </h2>{app.AppointmentID}
        <p>Appointment at </p>{app.date}
        <p><strong>Tutor:</strong> {app.TeacherID}</p>
        <p><strong>Student:</strong> {app.StudentuserName}</p>
@@ -101,14 +101,6 @@ a = response.data;
         <h1><center>Tutoring Appointments</center></h1>
         <br></br>
         {appointments}
-        <div className="form-container">
-        <div className="searchBox">
-        <legend className="title">Cancel An Appointment</legend>
-        <label for="tutorId">Appointment ID</label>
-        <input type="text" onChange={cancelHandler} placeholder="appointment Id" value={cancel} required/>
-        <button className="submit-button" onClick={submitButton}>Search</button>
-        </div>
-      </div>
       </section>
   </div>
         );

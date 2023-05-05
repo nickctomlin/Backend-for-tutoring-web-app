@@ -24,60 +24,15 @@ const   submitButton= async ()=>{
   const token = await getAccessTokenSilently();
   console.log(cancel);
   console.log("Hold is " + hold);
-
-  const response = await axios.post('http://localhost:4000/removeFavorite', {favorite: {favorite}},{
+  console.log(cancel);
+  const response = await axios.post('http://localhost:4000/removeFavorite', {favorite: cancel},{
   headers: {
     authorization: `Bearer ${token}`,
   }
 });
   var a = response.data;
   setCancel("");
-  callApi().then(()=>{
-    //console.log(checker);
-  if (a != null) {
-            console.log("Remove Favorite")
-            console.log(a);
-          setFavs(
-           <div>
-           {a.map(tutor => (
-             <div style={{color: "white"}}>
-             <div className='box'>
-             <h2>{tutor.tutorId}</h2>
-             <a>
-               <div className="about-me">
-                 <div></div>
-                 <b>About Me</b>: {tutor.aboutMe} 
-                 <br></br>
-                 <b>Expertise</b>: 
-                  <ul>
-              {tutor.SubjectList.map(element => <li >{element}</li>)}
-              </ul>
-              <div>
-             {tutor.avaliableTime.map((element,i )=> 
-               <div >
-                 Date: {element.date}<br/>
-                 Start Time: {element.openingHours.start}<br/>
-                 End Time: {element.openingHours.end}<br/>
-                 Number Of People: {element.openingHours.count}
-                 <br/>
-               </div>
-               )}
-               </div>
-               </div>
-               </a>
-               </div>
-           </div> 
-           ))}
-             </div>
-         );
-        } else
-        {
-         console.log("Mistake");
-        }
-
-});
-
-  //navigate("/");
+window.location.reload();
 }
   
 
@@ -85,8 +40,8 @@ const   submitButton= async ()=>{
     callApi().then(()=>{
       if (t != null) {
         console.log("Here At at Favorite List")
-        console.log(t[0].tutorId);
-        console.log(t[1].tutorId);
+        //console.log(t[0].tutorId);
+       // console.log(t[1].tutorId);
       setFavorite(
        <Masonry>
        {t.map(tutor => (
