@@ -207,13 +207,14 @@ app.get('/returnFavorites',jwtCheck, async function (req, res) {
             upComing.forEach((value, index, array) => {
                 tutorModel.findOne({tutorId: value}).then((docs)=>{
                     ret.push(docs);
-                    if (index === array.length -1) resolve();
+                    if (index == array.length -1) resolve();
                 })
             });
         });
         
         bar.then(() => {
-            console.log("Done");
+            console.log("Done In Return Favorite");
+            console.log(ret);
             res.send(ret);
         });
         //while(t == 0)
@@ -386,6 +387,39 @@ app.post('/tutors',urlencodedParser,express.json(), (req, res) => {
     console.log(name)
     console.log(req.body)
     userModel.findOneAndUpdate({userName: name},   { $push: { 
+        favoriteList: req.body.favorite
+      } 
+}).catch((err)=>{
+        //console.log(docs);
+        res.send(err);
+    })
+    .then((docs)=>{
+        console.log(docs)
+        res.send(docs);
+    });
+   }
+   catch
+   {
+    console.log("error")
+   res.send("Ths is wrong") 
+   }
+
+  // res.send("Here");
+   //res.json(req.body.Sri);
+ });
+ app.post('/removeFavorite',jwtCheck,express.json(), async (req, res) => {
+    console.log("In remove Favorite")
+   //console.log(req.body); // JavaScript object containing the parse JSON
+   try{
+    const token = req.headers.authorization.split(' ')[1];
+        const response =  await axios.get('https://dev-j4eggzupeca50pwe.us.auth0.com/userinfo',{headers: {
+            Authorization: `Bearer ${token}`,
+          }});
+    const userInfo = response.data
+    const name = userInfo.nickname;
+    console.log(name)
+    console.log(req.body)
+    userModel.findOneAndUpdate({userName: name},   { $pull: { 
         favoriteList: req.body.favorite
       } 
 }).catch((err)=>{

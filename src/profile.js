@@ -18,7 +18,7 @@ async function callProtectedApi(){
  // console.log("Is Authooo")
 const token = await getAccessTokenSilently();
 //console.log(token);
-const response = await axios.get('http://localhost:4000/returnReservations', {
+const response = await axios.post('http://localhost:4000/removeFavorite', {favorite: "yuruktesting"},{
   headers: {
     authorization: `Bearer ${token}`,
   }
