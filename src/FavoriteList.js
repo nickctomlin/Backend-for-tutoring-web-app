@@ -9,8 +9,76 @@ const FavoriteList = () => {
   var t
   var hold = "http://localhost:4000/tutors";
   const response =  axios.get(hold);
+  const [favs, setFavs] = useState(<div></div>);
   var fL = response.data;
+  const [cancel, setCancel] = useState("");
+  const cancelHandler = (e) =>{
+    // console.log(e.target.value);
+     
+    setCancel( e.target.value )
+}
 
+const   submitButton= async ()=>{
+  //console.log("Here in Try for User")
+  //console.log(user1);
+  const token = await getAccessTokenSilently();
+  console.log(cancel);
+  console.log("Hold is " + hold);
+
+  const response = await axios.post('http://localhost:4000/removeFavorite', {favorite: {favorite}},{
+  headers: {
+    authorization: `Bearer ${token}`,
+  }
+});
+  var a = response.data;
+  setCancel("");
+  callApi().then(()=>{
+    //console.log(checker);
+  if (a != null) {
+            console.log("Remove Favorite")
+            console.log(a);
+          setFavs(
+           <div>
+           {a.map(tutor => (
+             <div style={{color: "white"}}>
+             <div className='box'>
+             <h2>{tutor.tutorId}</h2>
+             <a>
+               <div className="about-me">
+                 <div></div>
+                 <b>About Me</b>: {tutor.aboutMe} 
+                 <br></br>
+                 <b>Expertise</b>: 
+                  <ul>
+              {tutor.SubjectList.map(element => <li >{element}</li>)}
+              </ul>
+              <div>
+             {tutor.avaliableTime.map((element,i )=> 
+               <div >
+                 Date: {element.date}<br/>
+                 Start Time: {element.openingHours.start}<br/>
+                 End Time: {element.openingHours.end}<br/>
+                 Number Of People: {element.openingHours.count}
+                 <br/>
+               </div>
+               )}
+               </div>
+               </div>
+               </a>
+               </div>
+           </div> 
+           ))}
+             </div>
+         );
+        } else
+        {
+         console.log("Mistake");
+        }
+
+});
+
+  //navigate("/");
+}
   
 
   useEffect(() => {
@@ -86,10 +154,20 @@ const FavoriteList = () => {
       <ResponsiveMasonry
       columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}}
     >
-    <section id="tutorlist">
+    <section id="favorites">
     <h1><center>Favorite List</center></h1>
     <br></br>
     {favorite}
+
+    <div className="form-container">
+      <div className="searchBox">
+      <legend className="title">Remove from Favorite List</legend>
+      <label for="tutorId">Remove</label>
+      <input type="text" onChange={cancelHandler} placeholder="appointment Id" value={cancel} required/>
+      <button className="submit-button" onClick={submitButton}>Search</button>
+    </div>
+    </div>
+
     </section>
     </ResponsiveMasonry>
     );
