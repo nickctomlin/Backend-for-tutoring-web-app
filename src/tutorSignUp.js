@@ -138,7 +138,7 @@ const TutorSignUp = () => {
         <input type="text" name="UTD ID" onChange={TutorIDHandler} placeholder="Tutor ID" value={TutorID} required/>
         <label for="password">Expected Graduation Date</label>
         <input type="text" name="ExpectedGradDate" onChange={expecHandler} placeholder="Expected Grad Date" value={ExpectedGradDate} required/>
-        <label for="Major">Major</label>
+        <label for="Major">Write Your About Me</label>
         <input type="text" name="major" onChange={majorHandler} placeholder="Major" value={major} required/>
         <label type="What you Tutor?">What You Tutor?</label>
         <div className='addMajor'>

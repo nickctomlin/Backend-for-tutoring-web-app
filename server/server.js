@@ -1,4 +1,5 @@
 const axios = require('axios')
+const nodemailer = require("nodemailer");
 const express = require('express');
 const app = express();
 const { auth } = require('express-oauth2-jwt-bearer');
@@ -32,8 +33,35 @@ mongoose.connect(uri, {
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 //app.use(express.json())  
-app.get('/', function (req, res) {
-    res.send('Free');
+app.get('/sendEmailForAppointment/:userName/:DateEmail/:tutor', async function (req, res) {
+    userName = req.params.userName;
+    DateEmail = req.params.DateEmail;
+    tutor = req.params.tutor
+
+    //let testAccount = await nodemailer.createTestAccount();
+    let mailTransporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'svemugunta@gmail.com',
+            pass: 'wqbsiesfampmyojx'
+        }
+    });
+     
+    let mailDetails = {
+        from: 'svemugunta@gmail.com',
+        to: userName,
+        subject: 'Appointment Has Been Made',
+        text: 'Date is ' + DateEmail + " With Tutor: " + tutor
+    };
+     
+    mailTransporter.sendMail(mailDetails, function(err, data) {
+        if(err) {
+            console.log('Error Occurs');
+        } else {
+            console.log('Email sent successfully');
+        }
+    });
+
 });
 
 app.get('/protected',jwtCheck, async function (req, res) {
@@ -240,13 +268,13 @@ app.get('/check1',jwtCheck, async function (req, res) {
         send = "User";
         }
     });
+    res.send(send);
 }
 catch{
    console.log("error")
    res.send("Mistake");
 }
 //console.log("Send is " + send);
-res.send(send);
 });
 app.get('/reservations/:id',jwtCheck, async function (req, res) {
     ID = req.params.Id;

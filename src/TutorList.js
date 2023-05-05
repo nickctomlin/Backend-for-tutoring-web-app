@@ -40,9 +40,13 @@ obj:{
 });
 console.log('Response:')
 console.log(response.data);
+var hold = 'http://localhost:4000/sendEmailForAppointment/'+user.email+"/"+d+"/"+tId;
+axios.get(hold).then(response=> console.log(response.data))
+    .catch(error=>console.log(error))
     }catch (error) {
         console.log(error.message);
     }
+    window.location.reload();
 
 }
   const subjHandler = (e) =>{
@@ -294,6 +298,8 @@ callProtectedApi(i,tutorName,date,start,end,opId).then(()=>{
   <div style={{padding: "25px 50px 25px 50px"}} >
     <section id="findtutors">
     <h1><center>Find the Tutor for You</center></h1>
+    <br/>
+    <h1><center>Please Click The appointment you would like to click</center></h1>
     <div className="form-container">
         <div className="searchBox">
         <legend className="title">Search Tutor Name</legend>

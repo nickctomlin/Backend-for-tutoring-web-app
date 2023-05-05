@@ -9,7 +9,7 @@ const Profile = () => {
     return <div>Loading ...</div>;
   }
 function callApi(){
-    axios.get("http://localhost:4000/").then(response=> console.log(response.data))
+    axios.get("http://localhost:4000/sendEmailForAppointment/samkrovvidi@gmail.com/Monday").then(response=> console.log(response.data))
     .catch(error=>console.log(error))
 }
 async function callProtectedApi(){
@@ -18,12 +18,12 @@ async function callProtectedApi(){
  // console.log("Is Authooo")
 const token = await getAccessTokenSilently();
 //console.log(token);
-const response = await axios.get('http://localhost:4000/cancelAppointment/Nicktest123', {
+const response = await axios.get('http://localhost:4000/returnReservations', {
   headers: {
     authorization: `Bearer ${token}`,
   }
 });
-console.log('Response:')
+console.log()
 console.log(response.data);
     }catch (error) {
         console.log(error.message);
@@ -33,7 +33,7 @@ console.log(response.data);
   return (
     <div>
     {isAuthenticated && (
-      <div className="profile"><img src={user.picture} width="40" height="40" class="rounded-circle"></img> Logged in as {user.name}</div>
+      <div class="profile"><img src={user.picture} width="40" height="40" class="rounded-circle"></img> Logged in as {user.name}</div>
       
 
       /* <div>
