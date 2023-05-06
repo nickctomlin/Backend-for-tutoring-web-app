@@ -6,6 +6,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+Open one terminal that runs in the server folder (cd server).
+Open another terminal that runs the React application.
+
+Inside the server folder run the following command to install npm:
+Run the same commmand in the project folder.
+### `npm i --force`
+
+Then, run the following command to start the server and React application in the server folder:
+Run the same commmand in the project folder.
 ### `npm start`
 
 Runs the app in the development mode.\
