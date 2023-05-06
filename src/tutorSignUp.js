@@ -189,6 +189,7 @@ const TutorSignUp = () => {
     }
   </div>
   );
+  }
 };
 
 export default TutorSignUp;
