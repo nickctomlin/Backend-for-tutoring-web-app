@@ -4,6 +4,7 @@ import UserNavigation from "./UserNavigation";
 import UserHome from "./UserHome";
 import AboutUs from './AboutUs';
 import Header from "./Header";
+import Footer from "./Footer";
 import { useAuth0, isAuthenticated} from "@auth0/auth0-react";
 
 function UserPage()  {
@@ -21,6 +22,7 @@ function UserPage()  {
     <Header/>
     <UserHome/>
     <AboutUs/>
+    <Footer/>
   </div>
   //return <button onClick={() => loginWithPopup()}>Log In With loginWithPopup</button>
   );
