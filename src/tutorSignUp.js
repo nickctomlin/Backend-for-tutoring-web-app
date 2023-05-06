@@ -86,7 +86,7 @@ const TutorSignUp = () => {
     }
   
 
-  const  submitButton= ()=>{
+  const  submitButton= async ()=>{
     if(image!= null)
     {
 
@@ -94,11 +94,14 @@ const TutorSignUp = () => {
     console.log("Image is");
     console.log(image);
     const reader = new FileReader();
+    try{
     reader.readAsDataURL(image);
     reader.addEventListener('load',()=>
     {
       localStorage.setItem(user.nickname+"0",reader.result);
     })
+  } catch {
+    console.log("Error");
   }
     if(ExpectedGradDate!= null && subjectList!= [] && major!= null && daysAvaliable!=[])
     {
