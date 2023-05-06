@@ -87,14 +87,19 @@ const TutorSignUp = () => {
   
 
   const  submitButton= ()=>{
+    if(image!= null)
+    {
+
+    
     console.log("Image is");
     console.log(image);
     const reader = new FileReader();
     reader.readAsDataURL(image);
     reader.addEventListener('load',()=>
     {
-      localStorage.setItem(user.nickname,reader.result);
+      localStorage.setItem(user.nickname+"0",reader.result);
     })
+  }
     if(ExpectedGradDate!= null && subjectList!= [] && major!= null && daysAvaliable!=[])
     {
    var tutor = {

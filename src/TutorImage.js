@@ -4,7 +4,7 @@ const TutorImage = () => {
     const { logout,isAuthenticated,getAccessTokenSilently,user  } = useAuth0();
     const [image, setImage] = useState();
     useEffect(() => {
-        const img = localStorage.getItem(user.nickname)
+        const img = localStorage.getItem(user.nickname+"0")
         if(img)
         {
             setImage(img);
