@@ -100,9 +100,11 @@ const TutorSignUp = () => {
     {
       localStorage.setItem(user.nickname+"0",reader.result);
     })
-  } catch {
-    console.log("Error");
-  }
+  }  catch (e) {
+    console.log("Local Storage is full, Please empty data");
+    // fires When localstorage gets full
+    // you can handle error here or empty the local storage
+}
     if(ExpectedGradDate!= null && subjectList!= [] && major!= null && daysAvaliable!=[])
     {
    var tutor = {
@@ -131,7 +133,9 @@ const TutorSignUp = () => {
     {
       alert("You have not Completed Some of the Forms");
     }
+
   }
+}
   function handleImage(e) {
     console.log(e.target.files)
     setImage(e.target.files[0])
@@ -189,7 +193,6 @@ const TutorSignUp = () => {
     }
   </div>
   );
-  }
 };
 
 export default TutorSignUp;
